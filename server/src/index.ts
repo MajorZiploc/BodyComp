@@ -1,24 +1,26 @@
 import { Server, Request, ResponseToolkit } from "@hapi/hapi";
+import { jsonComparer as jc, jsonRefactor as jr } from 'json-test-utility'
+import * as Joi from '@hapi/joi'
 
 import * as ADODB from "node-adodb";
 
-const connection = ADODB.open(
-  "Provider=MSOLEDBSQL;Server=(localdb)\\MSSQLLocalDB;Database=BodyComp;Trusted_Connection=yes;"
-);
+// const connection = ADODB.open(
+//   "Provider=MSOLEDBSQL;Server=(localdb)\\MSSQLLocalDB;Database=BodyComp;Trusted_Connection=yes;"
+// );
 
-let command = "select * from dbo.Day;";
+// let command = "select * from dbo.Day;";
 
-connection
-  .query(command)
-  .then((data) => {
-    console.log("here");
-    console.log(data);
-    console.log(JSON.stringify(data, null, 2));
-  })
-  .catch((error) => {
-    console.log("here2");
-    console.error(error);
-  });
+// connection
+//   .query(command)
+//   .then((data) => {
+//     console.log("here");
+//     console.log(data);
+//     console.log(JSON.stringify(data, null, 2));
+//   })
+//   .catch((error) => {
+//     console.log("here2");
+//     console.error(error);
+//   });
 
 const init = async () => {
   const server: Server = new Server({
@@ -30,8 +32,41 @@ const init = async () => {
     method: "GET",
     path: "/",
     handler: (request: Request, h: ResponseToolkit) => {
-      return "Hello World!";
+      var p = request.query;
+      console.log(p);
+      return p;
     },
+  });
+
+  server.route({
+    method: "GET",
+    path: "/day",
+    handler: (request: Request, h: ResponseToolkit) => {
+      const expectedKeys = [
+        "date",
+        "morningWeight",
+        "morningWeightUnits",
+        "calories",
+        "bodyFatPercentage",
+        "muscleMassPercentage"
+      ];
+      var p = request.query;
+      console.log(p);
+      return p;
+    },
+      options: {
+        validate: {
+            query: Joi.object({
+                minDate: Joi.date(),
+                maxDate: Joi.date()
+                // minMorningWeight: Joi.number().integer().positive(),
+                // maxMorningWeight: Joi.number().integer().positive(),
+                // minCalories: Joi.number().positive(),
+                // bodyFatPercentage: Joi.number().positive(),
+                // muscleMassPercentage: Joi.number().positive()
+            }) as any
+        }
+    }
   });
 
   server.route({
