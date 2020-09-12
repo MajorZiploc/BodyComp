@@ -1,6 +1,7 @@
 import { Server, Request, ResponseToolkit } from "@hapi/hapi";
 import { jsonComparer as jc, jsonRefactor as jr } from 'json-test-utility'
 import * as Joi from '@hapi/joi'
+import * as sql from 'sql-query';
 
 import * as ADODB from "node-adodb";
 
@@ -52,7 +53,13 @@ const init = async () => {
       ];
       var p = request.query;
       console.log(p);
-      return p;
+      var sqlSelect = sql.Query().select();
+ 
+      return sqlSelect
+        .from('day')
+        .where({ col: sql.gte(1) })
+        .build();
+      // return p;
     },
       options: {
         validate: {
