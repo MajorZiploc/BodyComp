@@ -11,3 +11,13 @@
 ## Debug Server
 
 Debug using Server in .vscode
+
+# Javascript and Typescript Prettier Linting steps
+
+1. install prettier
+   > `npm install prettier`
+2. put .prettierrc and .prettierignore at root of project
+3. run
+   > `npm install -g prettier`
+4. Formatting whole project: run at the project root
+   > `prettier --write "**/*"`
