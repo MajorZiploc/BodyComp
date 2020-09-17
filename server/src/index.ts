@@ -1,24 +1,24 @@
-import { Server, Request, ResponseToolkit } from "@hapi/hapi";
-import { jsonComparer as jc, jsonRefactor as jr } from "json-test-utility";
-import * as Joi from "@hapi/joi";
+import { Server, Request, ResponseToolkit } from '@hapi/hapi';
+import { jsonComparer as jc, jsonRefactor as jr } from 'json-test-utility';
+import * as Joi from '@hapi/joi';
 //@ts-ignore
-import * as sql from "sql-query";
+import * as sql from 'sql-query';
 
-import * as ADODB from "node-adodb";
+import * as ADODB from 'node-adodb';
 
 const connection = ADODB.open(
-  "Provider=MSOLEDBSQL;Server=(localdb)\\MSSQLLocalDB;Database=BodyComp;Trusted_Connection=yes;"
+  'Provider=MSOLEDBSQL;Server=(localdb)\\MSSQLLocalDB;Database=BodyComp;Trusted_Connection=yes;'
 );
 
 const init = async () => {
   const server: Server = new Server({
     port: 3000,
-    host: "localhost",
+    host: 'localhost',
   });
 
   server.route({
-    method: "GET",
-    path: "/",
+    method: 'GET',
+    path: '/',
     handler: (request: Request, h: ResponseToolkit) => {
       var p = request.query;
       console.log(p);
@@ -27,21 +27,21 @@ const init = async () => {
   });
 
   server.route({
-    method: "GET",
-    path: "/day",
+    method: 'GET',
+    path: '/day',
     handler: (request: Request, h: ResponseToolkit) => {
       var p = request.query;
       console.log(p);
-      var sqlSelect = sql.Query("MSSQL").select();
-      const dateFloor = new Date("01/01/1753");
-      const dateCeiling = new Date("12/31/9999");
+      var sqlSelect = sql.Query('MSSQL').select();
+      const dateFloor = new Date('01/01/1753');
+      const dateCeiling = new Date('12/31/9999');
       const minDate = p.minDate != null ? new Date(p.minDate) : dateFloor;
       const maxDate = p.maxDate != null ? new Date(p.maxDate) : dateCeiling;
       const sqlQuery = sqlSelect
-        .from("day")
+        .from('day')
         .where({ DyDate: sql.between(minDate, maxDate) })
         .build();
-      return connection.query(sqlQuery).then((data) => data);
+      return connection.query(sqlQuery).then(data => data);
     },
 
     options: {
@@ -60,17 +60,17 @@ const init = async () => {
   });
 
   server.route({
-    method: "GET",
-    path: "/foo",
+    method: 'GET',
+    path: '/foo',
     handler: (request: Request, h: ResponseToolkit) => {
-      return { foo: "bar" };
+      return { foo: 'bar' };
     },
   });
   await server.start();
-  console.log("Server running on %s", server.info.uri);
+  console.log('Server running on %s', server.info.uri);
 };
 
-process.on("unhandledRejection", (err) => {
+process.on('unhandledRejection', err => {
   console.log(err);
   process.exit(1);
 });
