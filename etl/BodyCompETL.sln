@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "BodyCompETL", "BodyCompETL\BodyCompETL.dtproj", "{34ED5F78-07DC-4684-A427-41F1B8BEDBD6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34ED5F78-07DC-4684-A427-41F1B8BEDBD6}.Development|Default.ActiveCfg = Development
+		{34ED5F78-07DC-4684-A427-41F1B8BEDBD6}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5CD7C9B4-3AAC-49A3-A0A5-AC9D7D2B0119}
+	EndGlobalSection
+EndGlobal
