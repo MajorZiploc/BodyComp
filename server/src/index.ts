@@ -1,5 +1,6 @@
 import { Server, Request, ResponseToolkit } from '@hapi/hapi';
 import { jsonComparer as jc, jsonRefactor as jr } from 'json-test-utility';
+import { config } from './config';
 import * as Joi from '@hapi/joi';
 //@ts-ignore
 import * as sql from 'sql-query';
@@ -12,8 +13,8 @@ const connection = ADODB.open(
 
 const init = async () => {
   const server: Server = new Server({
-    port: 3000,
-    host: 'localhost',
+    port: config.port,
+    host: config.host,
   });
 
   server.route({
