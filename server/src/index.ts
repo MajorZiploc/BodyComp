@@ -1,27 +1,13 @@
 import { Server, Request, ResponseToolkit } from "@hapi/hapi";
-import { jsonComparer as jc, jsonRefactor as jr } from 'json-test-utility'
-import * as Joi from '@hapi/joi'
-import * as sql from 'sql-query';
+import { jsonComparer as jc, jsonRefactor as jr } from "json-test-utility";
+import * as Joi from "@hapi/joi";
+import * as sql from "sql-query";
 
 import * as ADODB from "node-adodb";
 
-// const connection = ADODB.open(
-//   "Provider=MSOLEDBSQL;Server=(localdb)\\MSSQLLocalDB;Database=BodyComp;Trusted_Connection=yes;"
-// );
-
-// let command = "select * from dbo.Day;";
-
-// connection
-//   .query(command)
-//   .then((data) => {
-//     console.log("here");
-//     console.log(data);
-//     console.log(JSON.stringify(data, null, 2));
-//   })
-//   .catch((error) => {
-//     console.log("here2");
-//     console.error(error);
-//   });
+const connection = ADODB.open(
+  "Provider=MSOLEDBSQL;Server=(localdb)\\MSSQLLocalDB;Database=BodyComp;Trusted_Connection=yes;"
+);
 
 const init = async () => {
   const server: Server = new Server({
@@ -43,37 +29,36 @@ const init = async () => {
     method: "GET",
     path: "/day",
     handler: (request: Request, h: ResponseToolkit) => {
-      const expectedKeys = [
-        "date",
-        "morningWeight",
-        "morningWeightUnits",
-        "calories",
-        "bodyFatPercentage",
-        "muscleMassPercentage"
-      ];
       var p = request.query;
       console.log(p);
-      var sqlSelect = sql.Query().select();
- 
-      return sqlSelect
-        .from('day')
-        .where({ col: sql.gte(1) })
+      var sqlSelect = sql.Query("MSSQL").select();
+      const dateFloor = new Date("01/01/1753");
+      const dateCeiling = new Date("12/31/9999");
+      const minDate = p.minDate != null ? new Date(p.minDate) : dateFloor;
+      const maxDate = p.maxDate != null ? new Date(p.maxDate) : dateCeiling;
+
+      const sqlQuery = sqlSelect
+        .from("day")
+        .where({ DyDate: sql.between(minDate, maxDate) })
         .build();
-      // return p;
+
+      console.log(sqlQuery);
+
+      return connection.query(sqlQuery).then((data) => data);
     },
-      options: {
-        validate: {
-            query: Joi.object({
-                minDate: Joi.date(),
-                maxDate: Joi.date()
-                // minMorningWeight: Joi.number().integer().positive(),
-                // maxMorningWeight: Joi.number().integer().positive(),
-                // minCalories: Joi.number().positive(),
-                // bodyFatPercentage: Joi.number().positive(),
-                // muscleMassPercentage: Joi.number().positive()
-            }) as any
-        }
-    }
+    options: {
+      validate: {
+        query: Joi.object({
+          minDate: Joi.date(),
+          maxDate: Joi.date(),
+          // minMorningWeight: Joi.number().integer().positive(),
+          // maxMorningWeight: Joi.number().integer().positive(),
+          // minCalories: Joi.number().positive(),
+          // bodyFatPercentage: Joi.number().positive(),
+          // muscleMassPercentage: Joi.number().positive()
+        }) as any,
+      },
+    },
   });
 
   server.route({
