@@ -4,7 +4,6 @@ import { config } from './config';
 import * as Joi from '@hapi/joi';
 //@ts-ignore
 import * as sql from 'sql-query';
-
 import * as ADODB from 'node-adodb';
 
 const connection = ADODB.open(
@@ -40,6 +39,14 @@ const init = async () => {
       const maxDate = p.maxDate != null ? new Date(p.maxDate) : dateCeiling;
       const sqlQuery = sqlSelect
         .from('day')
+        .select([
+          'DyDate',
+          'DyCalories',
+          'DyMorningWeight',
+          'DyWeightUnitsId',
+          'DyBodyFatPercentage',
+          'DyMuscleMassPercentage',
+        ])
         .where({ DyDate: sql.between(minDate, maxDate) })
         .build();
       return connection.query(sqlQuery).then(data => data);
