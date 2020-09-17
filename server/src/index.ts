@@ -1,6 +1,7 @@
 import { Server, Request, ResponseToolkit } from "@hapi/hapi";
 import { jsonComparer as jc, jsonRefactor as jr } from "json-test-utility";
 import * as Joi from "@hapi/joi";
+//@ts-ignore
 import * as sql from "sql-query";
 
 import * as ADODB from "node-adodb";
@@ -36,16 +37,13 @@ const init = async () => {
       const dateCeiling = new Date("12/31/9999");
       const minDate = p.minDate != null ? new Date(p.minDate) : dateFloor;
       const maxDate = p.maxDate != null ? new Date(p.maxDate) : dateCeiling;
-
       const sqlQuery = sqlSelect
         .from("day")
         .where({ DyDate: sql.between(minDate, maxDate) })
         .build();
-
-      console.log(sqlQuery);
-
       return connection.query(sqlQuery).then((data) => data);
     },
+
     options: {
       validate: {
         query: Joi.object({
