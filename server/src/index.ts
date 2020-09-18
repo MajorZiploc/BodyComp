@@ -61,7 +61,8 @@ const init = async () => {
         ])
         .where({ DyDate: sql.between(minDate, maxDate) })
         .build();
-      return connection.query(sqlQuery).then(data => data);
+      // return connection.query(sqlQuery).then(data => data);
+      return { day: 'tihs' };
     },
 
     options: {
@@ -83,7 +84,7 @@ const init = async () => {
     method: 'GET',
     path: '/foo',
     handler: (request: Request, h: ResponseToolkit) => {
-      return { foo: 'bar' };
+      return { foo: 'barz' };
     },
   });
   await server.start();

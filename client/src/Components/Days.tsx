@@ -6,7 +6,7 @@ const Days = () => {
   const [days, setDays] = useState({});
 
   async function fetchData() {
-    getDays({})
+    getDays()
       .then(res => {
         return setDays(res);
       })
@@ -17,7 +17,7 @@ const Days = () => {
 
   useEffect(() => {
     fetchData();
-  });
+  }, []);
 
   return (
     <div>

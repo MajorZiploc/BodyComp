@@ -1,2 +1,4 @@
-import * as c from '../config.json';
-export const config = c;
+export const config = {
+  host: 'localhost',
+  port: 57153,
+};

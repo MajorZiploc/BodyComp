@@ -9,15 +9,14 @@ export interface DaysParams {
 }
 
 function formatQueryParams(json?: any) {
-  if (json === null) return '';
+  if (json === null || json === undefined) return '';
   const qps = jr.toKeyValArray(json);
   return qps.length == 0 ? '' : '?' + qps.map(ele => ele.key + '=' + ele.value).join('&');
 }
 
 export async function getDays(queryParams?: DaysParams): Promise<Day[]> {
   const url = urljoin(config.apiUrl, 'day', formatQueryParams(queryParams));
-  console.log(url);
-  return fetch(url).then(async r => {
+  return fetch(url, { mode: 'no-cors' }).then(async r => {
     return await r.json();
   });
 }
