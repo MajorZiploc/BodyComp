@@ -4,11 +4,11 @@ import { config } from './config';
 import * as Joi from '@hapi/joi';
 //@ts-ignore
 import * as sql from 'sql-query';
-import * as ADODB from 'node-adodb';
+// import * as ADODB from 'node-adodb';
 
-const connection = ADODB.open(
-  'Provider=MSOLEDBSQL;Server=(localdb)\\MSSQLLocalDB;Database=BodyComp;Trusted_Connection=yes;'
-);
+// const connection = ADODB.open(
+//   'Provider=MSOLEDBSQL;Server=(localdb)\\MSSQLLocalDB;Database=BodyComp;Trusted_Connection=yes;'
+// );
 
 // TODO: add cors settings
 // let configureCors (builder : CorsPolicyBuilder) =
