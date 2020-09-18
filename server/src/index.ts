@@ -14,6 +14,13 @@ const init = async () => {
   const server: Server = new Server({
     port: config.port,
     host: config.host,
+    routes: {
+      cors: {
+        origin: ['http://localhost:3000'], // an array of origins or 'ignore'
+        maxAge: 60,
+        credentials: true, // boolean - 'Access-Control-Allow-Credentials'
+      },
+    },
   });
 
   server.route({
@@ -71,7 +78,7 @@ const init = async () => {
     method: 'GET',
     path: '/foo',
     handler: (request: Request, h: ResponseToolkit) => {
-      return { foo: 'bar' };
+      return { foo: 'barz' };
     },
   });
   await server.start();
