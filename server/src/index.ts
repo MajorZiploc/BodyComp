@@ -10,10 +10,22 @@ const connection = ADODB.open(
   'Provider=MSOLEDBSQL;Server=(localdb)\\MSSQLLocalDB;Database=BodyComp;Trusted_Connection=yes;'
 );
 
+// TODO: add cors settings
+// let configureCors (builder : CorsPolicyBuilder) =
+//     builder.WithOrigins("http://localhost:3000")
+//            .AllowAnyMethod()
+//            .AllowAnyHeader()
+//            |> ignore
+
 const init = async () => {
   const server: Server = new Server({
     port: config.port,
     host: config.host,
+    routes: {
+      cors: {
+        origin: ['*'],
+      },
+    },
   });
 
   server.route({

@@ -7,8 +7,12 @@ const Days = () => {
 
   async function fetchData() {
     getDays({})
-      .then(res => setDays(res))
-      .catch(err => setErrors(err));
+      .then(res => {
+        return setDays(res);
+      })
+      .catch(err => {
+        return setErrors(err);
+      });
   }
 
   useEffect(() => {

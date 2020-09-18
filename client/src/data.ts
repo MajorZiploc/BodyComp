@@ -17,7 +17,7 @@ function formatQueryParams(json?: any) {
 export async function getDays(queryParams?: DaysParams): Promise<Day[]> {
   const url = urljoin(config.apiUrl, 'day', formatQueryParams(queryParams));
   console.log(url);
-  return fetch(url, {
-    mode: 'no-cors',
-  }).then(r => r.json());
+  return fetch(url).then(async r => {
+    return await r.json();
+  });
 }
