@@ -4,18 +4,11 @@ import { config } from './config';
 import * as Joi from '@hapi/joi';
 //@ts-ignore
 import * as sql from 'sql-query';
-// import * as ADODB from 'node-adodb';
+import * as ADODB from 'node-adodb';
 
-// const connection = ADODB.open(
-//   'Provider=MSOLEDBSQL;Server=(localdb)\\MSSQLLocalDB;Database=BodyComp;Trusted_Connection=yes;'
-// );
-
-// TODO: add cors settings
-// let configureCors (builder : CorsPolicyBuilder) =
-//     builder.WithOrigins("http://localhost:3000")
-//            .AllowAnyMethod()
-//            .AllowAnyHeader()
-//            |> ignore
+const connection = ADODB.open(
+  'Provider=MSOLEDBSQL;Server=(localdb)\\MSSQLLocalDB;Database=BodyComp;Trusted_Connection=yes;'
+);
 
 const init = async () => {
   const server: Server = new Server({
@@ -63,8 +56,7 @@ const init = async () => {
         ])
         .where({ DyDate: sql.between(minDate, maxDate) })
         .build();
-      // return connection.query(sqlQuery).then(data => data);
-      return { day: 'tihs' };
+      return connection.query(sqlQuery).then(data => data);
     },
 
     options: {
