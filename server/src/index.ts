@@ -23,7 +23,9 @@ const init = async () => {
     host: config.host,
     routes: {
       cors: {
-        origin: ['*'],
+        origin: ['http://localhost:3000'], // an array of origins or 'ignore'
+        maxAge: 60,
+        credentials: true, // boolean - 'Access-Control-Allow-Credentials'
       },
     },
   });
