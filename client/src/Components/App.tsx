@@ -2,16 +2,18 @@ import React from 'react';
 import logo from '../Resources/logo.svg';
 import '../Styles/App.css';
 import Days from './Days';
-import WeightChart from './InteractiveWeightChart'
-import MockDays from "../MockDays.json";
+import WeightChart from './InteractiveWeightChart';
+import MockDays from '../MockDays.json';
 
 function App() {
   return (
     <div className='App'>
-      <WeightChart days={MockDays} data={MockDays.map(d => d.DyBodyFatPercentage)}
+      <WeightChart
+        days={MockDays}
+        data={MockDays.map(d => d.DyBodyFatPercentage)}
         labels={MockDays.map(d => new Date(d.DyDate).toLocaleDateString())}
         data2={MockDays.map(d => d.DyMuscleMassPercentage)}
-       />
+      />
       {/* <header className='App-header'>
         <Days />
         <img src={logo} className='App-logo' alt='logo' />
