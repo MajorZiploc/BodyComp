@@ -4,15 +4,15 @@ import '../Styles/App.css';
 import Days from './Days';
 import WeightChart from './InteractiveWeightChart';
 import MockDays from '../MockDays.json';
+import { Modal, Button, Container, Row, Col } from 'react-bootstrap';
 
 function App() {
   return (
     <div className='App'>
       <WeightChart
         days={MockDays}
-        data={MockDays.map(d => d.DyBodyFatPercentage)}
+        data={MockDays.map(d => d.DyMorningWeight)}
         labels={MockDays.map(d => new Date(d.DyDate).toLocaleDateString())}
-        data2={MockDays.map(d => d.DyMuscleMassPercentage)}
       />
       {/* <header className='App-header'>
         <Days />
