@@ -5,13 +5,20 @@ export default function LineEx(props:any){
     return (
         <Line data = {
         {
-            labels: ["January", "February", "March", "April", "May", "June", "July", "Cat"],
+            labels: props.labels,
             datasets: [{
-                label: "My First dataset",
+                label: "Body Fat % Over Time",
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, null, 30, 10,45],
-            }]
+                data: props.data
+            },
+            {
+                label: "Muscle Mass % Over Time",
+                backgroundColor: 'rgb(132, 99, 255)',
+                borderColor: 'rgb(132, 99, 255)',
+                data: props.data2
+            }
+        ]
         }
         } />
     )

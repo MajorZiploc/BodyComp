@@ -4,12 +4,16 @@ import '../Styles/App.css';
 import Days from './Days';
 import BarEx from './BarEx'
 import LineEx from './LineEx'
+import MockDays from "../MockDays.json";
 
 function App() {
   return (
     <div className='App'>
       <BarEx />
-      <LineEx />
+      <LineEx data={MockDays.map(d => d.DyBodyFatPercentage)}
+        labels={MockDays.map(d => new Date(d.DyDate).toLocaleDateString())}
+        data2={MockDays.map(d => d.DyMuscleMassPercentage)}
+       />
       {/* <header className='App-header'>
         <Days />
         <img src={logo} className='App-logo' alt='logo' />
