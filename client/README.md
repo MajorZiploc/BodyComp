@@ -42,3 +42,16 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Data Visualization tools to check out
+
+article with tools to try
+https://medium.com/dailyjs/data-visualization-libraries-for-react-developers-in-2019-a2b9c01262f8
+
+https://formidable.com/open-source/victory/
+
+-- Excel like
+https://www.webdatarocks.com/?r=m7
+
+-- standard charts
+https://uber.github.io/react-vis/?r=m7
