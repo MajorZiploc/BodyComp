@@ -2,14 +2,13 @@ import React from 'react';
 import logo from '../Resources/logo.svg';
 import '../Styles/App.css';
 import Days from './Days';
-import BarEx from './BarEx'
-import Charts from './LineEx'
+import WeightChart from './InteractiveWeightChart'
 import MockDays from "../MockDays.json";
 
 function App() {
   return (
     <div className='App'>
-      <Charts days={MockDays} data={MockDays.map(d => d.DyBodyFatPercentage)}
+      <WeightChart days={MockDays} data={MockDays.map(d => d.DyBodyFatPercentage)}
         labels={MockDays.map(d => new Date(d.DyDate).toLocaleDateString())}
         data2={MockDays.map(d => d.DyMuscleMassPercentage)}
        />

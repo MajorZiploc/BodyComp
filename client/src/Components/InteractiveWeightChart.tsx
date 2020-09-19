@@ -1,8 +1,8 @@
 import React from 'react'
-import {Bubble, Line} from 'react-chartjs-2';
+import {Line} from 'react-chartjs-2';
 
 
-export default function Charts(props:any){
+export default function WeightChart(props:any){
     const days = props.days;
 
     function event(e: any){
