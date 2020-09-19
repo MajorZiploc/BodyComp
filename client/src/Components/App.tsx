@@ -3,14 +3,13 @@ import logo from '../Resources/logo.svg';
 import '../Styles/App.css';
 import Days from './Days';
 import BarEx from './BarEx'
-import LineEx from './LineEx'
+import Charts from './LineEx'
 import MockDays from "../MockDays.json";
 
 function App() {
   return (
     <div className='App'>
-      <BarEx />
-      <LineEx data={MockDays.map(d => d.DyBodyFatPercentage)}
+      <Charts days={MockDays} data={MockDays.map(d => d.DyBodyFatPercentage)}
         labels={MockDays.map(d => new Date(d.DyDate).toLocaleDateString())}
         data2={MockDays.map(d => d.DyMuscleMassPercentage)}
        />
