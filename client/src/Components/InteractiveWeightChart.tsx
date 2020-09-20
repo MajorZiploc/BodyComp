@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Modal, Button } from 'react-bootstrap';
 import { Day } from '../models';
+import PieBodyPercentage from './PieBodyPercentage';
 
 export default function WeightChart(props: any) {
   const days = props.days;
@@ -39,19 +40,24 @@ export default function WeightChart(props: any) {
         }}
       />
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>
-            Body Composition {day != undefined ? new Date(day?.DyDate).toLocaleDateString() : 'No date'}
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Put pie chart of bf and muscle mass and other %s</Modal.Body>
-        <Modal.Footer>
-          <Button variant='secondary' onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      {day && (
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Body Composition Percentages {new Date(day?.DyDate).toLocaleDateString()}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <PieBodyPercentage
+              data={[day.DyMuscleMassPercentage, day.DyBodyFatPercentage]}
+              labels={['Muscle Mass', 'Body Fat']}
+            />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant='secondary' onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
     </>
   );
 }
