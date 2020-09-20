@@ -1,3 +1,7 @@
+# TODO:
+
+1. Switch node-adodb to node-sqlserver-v8
+
 look into boom for hapi for custom api error messages
 https://hapi.dev/module/boom/api/?v=9.1.0
 
