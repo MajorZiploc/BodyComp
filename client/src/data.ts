@@ -2,6 +2,7 @@ import { config } from './config';
 import urljoin from 'url-join';
 import { jsonRefactor as jr } from 'json-test-utility';
 import { Day } from './models';
+import MockDays from './MockDays.json';
 
 export interface DaysParams {
   minDate?: string;
@@ -24,4 +25,8 @@ export async function getDays(queryParams?: DaysParams): Promise<any> {
   }).then(async r => {
     return await r.json();
   });
+}
+
+export async function getMockDays(queryParams?: DaysParams): Promise<any[]> {
+  return MockDays;
 }

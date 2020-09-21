@@ -8,10 +8,10 @@ export type StatusChangeParams = TimeRange & {
 };
 
 export type Day = {
-  DyDate: Date;
-  DyCalories: Number;
-  DyMorningWeight: Number;
-  DyWeightUnits: String;
-  DyBodyFatPercentage: Number;
-  DyMuscleMassPercentage: Number;
+  DyDate: string;
+  DyCalories: number | null;
+  DyMorningWeight: number | null;
+  DyWeightUnits: string | null;
+  DyBodyFatPercentage: number | null;
+  DyMuscleMassPercentage: number | null;
 };
