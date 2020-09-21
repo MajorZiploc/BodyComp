@@ -32,6 +32,12 @@ export default function WeightChart() {
     }
   }
 
+  function getOther(bf: any, mm: any) {
+    const x = bf ?? 0;
+    const y = mm ?? 0;
+    return 100 - x - y;
+  }
+
   return (
     <>
       {days && (
@@ -65,8 +71,12 @@ export default function WeightChart() {
               </Modal.Header>
               <Modal.Body>
                 <PieBodyPercentage
-                  data={[day.DyMuscleMassPercentage, day.DyBodyFatPercentage]}
-                  labels={['Muscle Mass', 'Body Fat']}
+                  data={[
+                    day.DyMuscleMassPercentage,
+                    day.DyBodyFatPercentage,
+                    getOther(day.DyBodyFatPercentage, day.DyMuscleMassPercentage),
+                  ]}
+                  labels={['Muscle Mass', 'Body Fat', 'Other']}
                 />
               </Modal.Body>
               <Modal.Footer>
