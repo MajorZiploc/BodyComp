@@ -32,12 +32,6 @@ export default function WeightChart() {
     }
   }
 
-  function getOther(bf: any, mm: any) {
-    const x = bf ?? 0;
-    const y = mm ?? 0;
-    return 100 - x - y;
-  }
-
   return (
     <>
       {days && (
@@ -70,14 +64,21 @@ export default function WeightChart() {
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <PieBodyPercentage
-                  data={[
-                    day.DyMuscleMassPercentage,
-                    day.DyBodyFatPercentage,
-                    getOther(day.DyBodyFatPercentage, day.DyMuscleMassPercentage),
-                  ]}
-                  labels={['Muscle Mass', 'Body Fat', 'Other']}
-                />
+                {day.DyBodyFatPercentage && day.DyMuscleMassPercentage ? (
+                  <PieBodyPercentage
+                    data={[
+                      day.DyMuscleMassPercentage,
+                      day.DyBodyFatPercentage,
+                      100 - day.DyBodyFatPercentage - day.DyMuscleMassPercentage,
+                    ]}
+                    labels={['Muscle Mass', 'Body Fat', 'Other']}
+                  />
+                ) : (
+                  <ul>
+                    <li>Muscle Mass: {`${day.DyMuscleMassPercentage}%` ?? 'no data'}</li>
+                    <li>Body Fat: {`${day.DyBodyFatPercentage}%` ?? 'no data'}</li>
+                  </ul>
+                )}
               </Modal.Body>
               <Modal.Footer>
                 <Button variant='secondary' onClick={handleClose}>
