@@ -11,7 +11,8 @@ export type Day = {
   DyDate: string;
   DyCalories: number | null;
   DyMorningWeight: number | null;
-  DyWeightUnits: string | null;
+  WuName: string | null;
+  WuLabel: string | null;
   DyBodyFatPercentage: number | null;
   DyMuscleMassPercentage: number | null;
 };

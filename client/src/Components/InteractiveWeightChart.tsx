@@ -1,20 +1,29 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { getMockDays } from '../data';
 import { Line } from 'react-chartjs-2';
 import { Modal, Button } from 'react-bootstrap';
 import { Day } from '../models';
 import PieBodyPercentage from './PieBodyPercentage';
 
-export default function WeightChart(props: any) {
-  const days = props.days;
+export default function WeightChart() {
   const [show, setShow] = useState(false);
   const [day, setDay] = useState<Day>();
+  const [days, setDays] = useState<Day[]>();
+  const firstDayWithWeightInfo = days?.find(d => d.WuName && d.WuLabel);
+
+  useEffect(() => {
+    const f = async () => {
+      setDays(await getMockDays({}));
+    };
+    f();
+  }, []);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   function event(e: any) {
-    if (e.length > 0) {
+    if (e.length > 0 && days != undefined) {
       const i = e[0]._index;
       console.log(`index: ${i}`);
       console.log(`data point clicked: ${days[i].DyDate}`);
@@ -25,38 +34,49 @@ export default function WeightChart(props: any) {
 
   return (
     <>
-      <Line
-        getElementsAtEvent={e => event(e)}
-        data={{
-          labels: props.labels,
-          datasets: [
-            {
-              label: 'Weight Over Time (Put units here!)',
-              backgroundColor: 'rgb(255, 99, 132)',
-              borderColor: 'rgb(255, 99, 132)',
-              data: props.data,
-            },
-          ],
-        }}
-      />
+      {days && (
+        <>
+          <Line
+            getElementsAtEvent={e => event(e)}
+            data={{
+              labels: days?.map(d => new Date(d.DyDate).toLocaleDateString()),
+              datasets: [
+                {
+                  label: `Weight Over Time in ${
+                    firstDayWithWeightInfo == undefined
+                      ? '<No Weight Units found!>'
+                      : `${firstDayWithWeightInfo?.WuName} (${firstDayWithWeightInfo?.WuLabel})`
+                  }`,
+                  backgroundColor: 'rgb(255, 99, 132)',
+                  borderColor: 'rgb(255, 99, 132)',
+                  data: days?.map(d => d.DyMorningWeight),
+                },
+              ],
+            }}
+          />
 
-      {day && (
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Body Composition Percentages {new Date(day?.DyDate).toLocaleDateString()}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <PieBodyPercentage
-              data={[day.DyMuscleMassPercentage, day.DyBodyFatPercentage]}
-              labels={['Muscle Mass', 'Body Fat']}
-            />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant='secondary' onClick={handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+          {day && (
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>
+                  Body Composition Percentages {new Date(day?.DyDate).toLocaleDateString()} - {day.DyMorningWeight}{' '}
+                  {day.WuLabel}
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <PieBodyPercentage
+                  data={[day.DyMuscleMassPercentage, day.DyBodyFatPercentage]}
+                  labels={['Muscle Mass', 'Body Fat']}
+                />
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant='secondary' onClick={handleClose}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          )}
+        </>
       )}
     </>
   );
