@@ -15,7 +15,7 @@ function formatQueryParams(json?: any) {
   return qps.length == 0 ? '' : '?' + qps.map(ele => ele.key + '=' + ele.value).join('&');
 }
 
-export async function getDays(queryParams?: DaysParams): Promise<any> {
+export async function getDays(queryParams?: DaysParams): Promise<any[]> {
   const url = urljoin(config.apiUrl, 'day', formatQueryParams(queryParams));
   return fetch(url, {
     mode: 'cors',

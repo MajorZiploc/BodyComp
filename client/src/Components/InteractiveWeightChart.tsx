@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { getMockDays } from '../data';
+import { getMockDays, getDays } from '../data';
 import { Line } from 'react-chartjs-2';
 import { Modal, Button } from 'react-bootstrap';
 import { Day } from '../models';
@@ -14,7 +14,7 @@ export default function WeightChart() {
 
   useEffect(() => {
     const f = async () => {
-      setDays(await getMockDays({}));
+      setDays(await getDays({}));
     };
     f();
   }, []);
