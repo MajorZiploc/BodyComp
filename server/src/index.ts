@@ -46,14 +46,9 @@ const init = async () => {
       const maxDate = p.maxDate != null ? new Date(p.maxDate) : dateCeiling;
       const sqlQuery = sqlSelect
         .from('day')
-        .select([
-          'DyDate',
-          'DyCalories',
-          'DyMorningWeight',
-          'DyWeightUnitsId',
-          'DyBodyFatPercentage',
-          'DyMuscleMassPercentage',
-        ])
+        .select(['DyDate', 'DyCalories', 'DyMorningWeight', 'DyBodyFatPercentage', 'DyMuscleMassPercentage'])
+        .from('weightunits', 'WuId', 'DyWeightUnitsId')
+        .select(['WuName', 'WuLabel'])
         .where({ DyDate: sql.between(minDate, maxDate) })
         .build();
       return connection.query(sqlQuery).then(data => data);
