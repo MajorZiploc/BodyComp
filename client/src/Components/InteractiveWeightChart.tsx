@@ -14,7 +14,7 @@ export default function WeightChart() {
 
   useEffect(() => {
     const f = async () => {
-      setDays(await getDays({}));
+      setDays(await getMockDays({}));
     };
     f();
   }, []);
