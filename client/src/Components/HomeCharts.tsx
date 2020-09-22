@@ -1,6 +1,4 @@
-import { Modal, Button } from 'react-bootstrap';
 import { Day } from '../models';
-import PieBodyPercentage from './PieBodyPercentage';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { getMockDays, getDays } from '../data';
