@@ -10,6 +10,7 @@ export default function HomeCharts() {
   const labels = days?.map((d: any) => new Date(d.DyDate).toLocaleDateString());
   const [day, setDay] = useState<Day>();
   const [show, setShow] = useState(false);
+  // TODO: add low date and high date filters for user
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
