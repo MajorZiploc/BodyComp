@@ -1,13 +1,13 @@
 import React from 'react';
 import '../Styles/App.css';
-import WeightChart from './InteractiveWeightChart';
+import HomeCharts from './HomeCharts';
 import Layout from './Shared/Layout';
 
 function App() {
   return (
     <div className='App'>
       <Layout />
-      <WeightChart />
+      <HomeCharts />
       {/* <header className='App-header'>
         <Days />
         <img src={logo} className='App-logo' alt='logo' />

@@ -6,18 +6,11 @@ import { Modal, Button } from 'react-bootstrap';
 import { Day } from '../models';
 import PieBodyPercentage from './PieBodyPercentage';
 
-export default function WeightChart() {
+export default function WeightChart(props: any) {
+  const days = props.days;
   const [show, setShow] = useState(false);
   const [day, setDay] = useState<Day>();
-  const [days, setDays] = useState<Day[]>();
-  const firstDayWithWeightInfo = days?.find(d => d.WuName && d.WuLabel);
-
-  useEffect(() => {
-    const f = async () => {
-      setDays(await getMockDays({}));
-    };
-    f();
-  }, []);
+  const firstDayWithWeightInfo = days?.find((d: any) => d.WuName && d.WuLabel);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -37,7 +30,7 @@ export default function WeightChart() {
           <Line
             getElementsAtEvent={e => event(e)}
             data={{
-              labels: days?.map(d => new Date(d.DyDate).toLocaleDateString()),
+              labels: days?.map((d: any) => new Date(d.DyDate).toLocaleDateString()),
               datasets: [
                 {
                   label: `Weight Over Time in ${
@@ -47,7 +40,7 @@ export default function WeightChart() {
                   }`,
                   backgroundColor: 'rgb(255, 99, 132)',
                   borderColor: 'rgb(255, 99, 132)',
-                  data: days?.map(d => d.DyMorningWeight),
+                  data: days?.map((d: any) => d.DyMorningWeight),
                 },
               ],
             }}
