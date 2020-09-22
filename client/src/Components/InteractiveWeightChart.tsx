@@ -8,27 +8,13 @@ import PieBodyPercentage from './PieBodyPercentage';
 
 export default function WeightChart(props: any) {
   const days = props.days;
-  const [show, setShow] = useState(false);
-  const [day, setDay] = useState<Day>();
-  const firstDayWithWeightInfo = days?.find((d: any) => d.WuName && d.WuLabel);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  function event(e: any) {
-    if (e.length > 0 && days !== undefined) {
-      const i = e[0]._index;
-      setDay(days[i]);
-      handleShow();
-    }
-  }
+  const firstDayWithWeightInfo = props.firstDayWithWeightInfo;
 
   return (
     <>
       {days && (
         <>
           <Line
-            getElementsAtEvent={e => event(e)}
             data={{
               labels: days?.map((d: any) => new Date(d.DyDate).toLocaleDateString()),
               datasets: [
@@ -45,39 +31,6 @@ export default function WeightChart(props: any) {
               ],
             }}
           />
-
-          {day && (
-            <Modal show={show} onHide={handleClose}>
-              <Modal.Header closeButton>
-                <Modal.Title>
-                  Body Composition Percentages {new Date(day?.DyDate).toLocaleDateString()} - {day.DyMorningWeight}{' '}
-                  {day.WuLabel}
-                </Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                {day.DyBodyFatPercentage && day.DyMuscleMassPercentage ? (
-                  <PieBodyPercentage
-                    data={[
-                      day.DyMuscleMassPercentage,
-                      day.DyBodyFatPercentage,
-                      (100 - day.DyBodyFatPercentage - day.DyMuscleMassPercentage).toFixed(2),
-                    ]}
-                    labels={['Muscle Mass', 'Body Fat', 'Other']}
-                  />
-                ) : (
-                  <ul>
-                    <li>Muscle Mass: {`${day.DyMuscleMassPercentage}%` ?? 'no data'}</li>
-                    <li>Body Fat: {`${day.DyBodyFatPercentage}%` ?? 'no data'}</li>
-                  </ul>
-                )}
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant='secondary' onClick={handleClose}>
-                  Close
-                </Button>
-              </Modal.Footer>
-            </Modal>
-          )}
         </>
       )}
     </>
