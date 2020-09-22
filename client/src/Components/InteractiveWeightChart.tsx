@@ -69,7 +69,7 @@ export default function WeightChart() {
                     data={[
                       day.DyMuscleMassPercentage,
                       day.DyBodyFatPercentage,
-                      100 - day.DyBodyFatPercentage - day.DyMuscleMassPercentage,
+                      (100 - day.DyBodyFatPercentage - day.DyMuscleMassPercentage).toFixed(2),
                     ]}
                     labels={['Muscle Mass', 'Body Fat', 'Other']}
                   />
