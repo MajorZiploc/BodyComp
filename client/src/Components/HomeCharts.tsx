@@ -4,8 +4,6 @@ import PieBodyPercentage from './PieBodyPercentage';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { getMockDays, getDays } from '../data';
-import WeightChart from './InteractiveWeightChart';
-import CaloriesChart from './CaloriesChart';
 import SingleLineChart from './SingleLineChart';
 
 export default function HomeCharts() {
@@ -36,7 +34,6 @@ export default function HomeCharts() {
   return (
     <>
       <SingleLineChart
-        days={days}
         day={day}
         show={show}
         label={`Weight Over Time in ${
@@ -53,7 +50,6 @@ export default function HomeCharts() {
       />
 
       <SingleLineChart
-        days={days}
         day={day}
         show={show}
         label={`Calories Over Time in ${

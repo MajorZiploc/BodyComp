@@ -4,7 +4,6 @@ import { Modal, Button } from 'react-bootstrap';
 import PieBodyPercentage from './PieBodyPercentage';
 
 export default function SingleLineChart(props: any) {
-  const days = props.days;
   const day = props.day;
   const show = props.show;
   const event = props.event;
