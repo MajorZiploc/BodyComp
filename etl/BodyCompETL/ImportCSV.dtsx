@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{1F3F978F-A163-45A9-BF1C-AD42D81F7AFE}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{30294F7E-ECE8-4D47-AB19-19C6F200EC27}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -30,7 +30,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\johnc\Desktop\dailyCalories - Sheet1.csv">
+          DTS:ConnectionString="C:\projects\BodyComp\etl\dailyCalories - Sheet1.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -39,7 +39,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="date"
-              DTS:DTSID="{0BEC3B0D-2BFE-4CA2-8E9D-2134D351DDB0}"
+              DTS:DTSID="{FDB0EE17-DD5C-47E8-948E-6258CD1F29FC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -48,7 +48,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="calories"
-              DTS:DTSID="{96CD4B1E-8F32-4328-9674-59380439EA40}"
+              DTS:DTSID="{3FCB60D6-6A4E-4E25-BB5E-D679C9D24A30}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -57,7 +57,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="morning_weight_(lbs)"
-              DTS:DTSID="{D06C3DA7-1E80-450C-AB2B-7FABB8A6DFD9}"
+              DTS:DTSID="{2981897D-813A-4654-B587-3AE7253057BF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -66,7 +66,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="body_fat_percentage"
-              DTS:DTSID="{B8718F07-6B14-4800-A29F-25639235A80C}"
+              DTS:DTSID="{D34302DE-5AE6-42AA-B90F-9E17F4A65093}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -75,7 +75,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="muscle_mass_percentage"
-              DTS:DTSID="{AB6654A2-D8CC-4050-B3EB-984F61F2E030}"
+              DTS:DTSID="{DD3D6DF3-DA20-426F-AAF9-7C35A8E8C22A}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -204,21 +204,21 @@
                       errorRowDisposition="FailComponent"
                       lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[DyCalories]"
                       name="DyCalories"
-                      precision="7"
-                      scale="3"
+                      precision="29"
+                      scale="2"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[calories]}) ? NULL(DT_NUMERIC,7,3) : (DT_NUMERIC,7,3)#{Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[calories]}</property>
+                          name="Expression">[ISNULL](#{Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[calories]}) || [LEN]([TRIM](#{Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[calories]})) == 0 ? NULL(DT_DECIMAL,2) : (DT_DECIMAL,2)[TRIM](#{Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[calories]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(calories) ? NULL(DT_NUMERIC,7,3) : (DT_NUMERIC,7,3)calories</property>
+                          name="FriendlyExpression">ISNULL(calories) || LEN(TRIM(calories)) == 0 ? NULL(DT_DECIMAL,2) : (DT_DECIMAL,2)TRIM(calories)</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -823,8 +823,8 @@ where [refTable].[DyDate] = ?</property>
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DyCalories]"
                       cachedDataType="numeric"
                       cachedName="DyCalories"
-                      cachedPrecision="7"
-                      cachedScale="3"
+                      cachedPrecision="29"
+                      cachedScale="2"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DyCalories]"
                       lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[DyCalories]" />
                     <inputColumn
