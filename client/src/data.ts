@@ -12,7 +12,7 @@ export interface DaysParams {
 function formatQueryParams(json?: any) {
   if (json === null || json === undefined) return '';
   const qps = jr.toKeyValArray(json);
-  return qps.length == 0 ? '' : '?' + qps.map(ele => ele.key + '=' + ele.value).join('&');
+  return qps.length === 0 ? '' : '?' + qps.map(ele => ele.key + '=' + ele.value).join('&');
 }
 
 export async function getDays(queryParams?: DaysParams): Promise<any[]> {

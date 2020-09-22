@@ -23,10 +23,8 @@ export default function WeightChart() {
   const handleShow = () => setShow(true);
 
   function event(e: any) {
-    if (e.length > 0 && days != undefined) {
+    if (e.length > 0 && days !== undefined) {
       const i = e[0]._index;
-      console.log(`index: ${i}`);
-      console.log(`data point clicked: ${days[i].DyDate}`);
       setDay(days[i]);
       handleShow();
     }
@@ -43,7 +41,7 @@ export default function WeightChart() {
               datasets: [
                 {
                   label: `Weight Over Time in ${
-                    firstDayWithWeightInfo == undefined
+                    firstDayWithWeightInfo === undefined
                       ? '<No Weight Units found!>'
                       : `${firstDayWithWeightInfo?.WuName} (${firstDayWithWeightInfo?.WuLabel})`
                   }`,

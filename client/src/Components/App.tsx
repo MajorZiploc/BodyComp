@@ -1,12 +1,7 @@
 import React from 'react';
-import logo from '../Resources/logo.svg';
 import '../Styles/App.css';
-import Days from './Days';
 import WeightChart from './InteractiveWeightChart';
 import Layout from './Shared/Layout';
-import { Day } from '../models';
-import { useState, useEffect } from 'react';
-import { Modal, Button, Container, Row, Col } from 'react-bootstrap';
 
 function App() {
   return (
