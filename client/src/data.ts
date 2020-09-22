@@ -28,5 +28,10 @@ export async function getDays(queryParams?: DaysParams): Promise<any[]> {
 }
 
 export async function getMockDays(queryParams?: DaysParams): Promise<any[]> {
-  return MockDays;
+  console.log(queryParams);
+  return MockDays.filter(
+    d => queryParams?.minDate === null || (queryParams?.minDate === undefined ? true : d.DyDate >= queryParams?.minDate)
+  ).filter(
+    d => queryParams?.maxDate === null || (queryParams?.maxDate === undefined ? true : d.DyDate <= queryParams?.maxDate)
+  );
 }

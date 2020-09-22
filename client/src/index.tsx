@@ -4,6 +4,7 @@ import './index.css';
 import App from './Components/App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-datepicker/dist/react-datepicker.css';
 
 ReactDOM.render(
   <React.StrictMode>

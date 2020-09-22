@@ -3,6 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { getMockDays, getDays } from '../data';
 import SingleLineChart from './SingleLineChart';
+import DatePicker from 'react-datepicker';
 
 export default function HomeCharts() {
   const [days, setDays] = useState<Day[]>();
@@ -10,14 +11,15 @@ export default function HomeCharts() {
   const labels = days?.map((d: any) => new Date(d.DyDate).toLocaleDateString());
   const [day, setDay] = useState<Day>();
   const [show, setShow] = useState(false);
-  // TODO: add low date and high date filters for user
+  const [startDate, setStartDate] = useState<Date>();
+  const [endDate, setEndDate] = useState<Date>();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
     const f = async () => {
-      setDays(await getMockDays({}));
+      setDays(await getMockDays({ minDate: startDate?.toLocaleDateString(), maxDate: endDate?.toLocaleDateString() }));
     };
     f();
   }, []);
@@ -32,6 +34,8 @@ export default function HomeCharts() {
 
   return (
     <>
+      <DatePicker selected={startDate} onChange={(d: Date) => setStartDate(d)} />
+      <DatePicker selected={endDate} onChange={(d: Date) => setEndDate(d)} />
       <SingleLineChart
         day={day}
         show={show}
