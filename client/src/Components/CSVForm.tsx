@@ -8,6 +8,8 @@ function CSVForm() {
 
   async function onSubmit(e: any) {
     const stuff = await readCSVs(files ?? []);
+    const x = 1;
+    console.log(x);
   }
 
   function onChangeFile(e: any) {
