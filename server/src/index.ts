@@ -12,13 +12,7 @@ const init = async () => {
   const server: Server = new Server({
     port: config.port,
     host: config.host,
-    routes: {
-      cors: {
-        origin: ['http://localhost:3000'], // an array of origins or 'ignore'
-        maxAge: 60,
-        credentials: true, // boolean - 'Access-Control-Allow-Credentials'
-      },
-    },
+    routes: config.routes,
   });
 
   server.route({
@@ -26,7 +20,6 @@ const init = async () => {
     path: '/',
     handler: (request: Request, h: ResponseToolkit) => {
       var p = request.query;
-      console.log(p);
       return p;
     },
   });
@@ -36,7 +29,6 @@ const init = async () => {
     path: '/day',
     handler: (request: Request, h: ResponseToolkit) => {
       var p = request.query;
-      console.log(p);
       var sqlSelect = sql.Query('MSSQL').select();
       const dateFloor = new Date('01/01/1753');
       const dateCeiling = new Date('12/31/9999');
