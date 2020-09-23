@@ -2,8 +2,21 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Modal, Button } from 'react-bootstrap';
 import PieBodyPercentage from './PieBodyPercentage';
+import { Day } from '../models';
 
-export default function SingleLineChart(props: any) {
+export interface SingleLineChartProps {
+  day?: Day;
+  show: boolean;
+  event: (e: any) => void;
+  label: string;
+  labels?: string[];
+  backgroundColor: string;
+  borderColor: string;
+  handleClose: () => void;
+  data: any[] | undefined;
+}
+
+export default function SingleLineChart(props: SingleLineChartProps) {
   const day = props.day;
   const show = props.show;
   const event = props.event;

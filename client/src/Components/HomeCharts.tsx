@@ -8,7 +8,7 @@ import DatePicker from 'react-datepicker';
 export default function HomeCharts() {
   const [days, setDays] = useState<Day[]>();
   const firstDayWithWeightInfo = days?.find((d: any) => d.WuName && d.WuLabel);
-  const labels = days?.map((d: any) => new Date(d.DyDate).toLocaleDateString());
+  const labels = days?.map((d: Day) => new Date(d.DyDate).toLocaleDateString());
   const [day, setDay] = useState<Day>();
   const [show, setShow] = useState(false);
   const [startDate, setStartDate] = useState<Date>();
@@ -49,7 +49,7 @@ export default function HomeCharts() {
         borderColor='rgb(255, 99, 132)'
         handleClose={handleClose}
         event={event}
-        data={days?.map((d: any) => d.DyMorningWeight)}
+        data={days?.map((d: Day) => d.DyMorningWeight)}
       />
 
       <SingleLineChart
@@ -65,7 +65,7 @@ export default function HomeCharts() {
         borderColor='rgb(132, 99, 255)'
         handleClose={handleClose}
         event={event}
-        data={days?.map((d: any) => d.DyCalories)}
+        data={days?.map((d: Day) => d.DyCalories)}
       />
     </>
   );
