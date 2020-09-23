@@ -6,9 +6,7 @@ import * as Joi from '@hapi/joi';
 import * as sql from 'sql-query';
 import * as ADODB from 'node-adodb';
 
-const connection = ADODB.open(
-  'Provider=MSOLEDBSQL;Server=(localdb)\\MSSQLLocalDB;Database=BodyComp;Trusted_Connection=yes;'
-);
+const connection = ADODB.open(config.connectionString);
 
 const init = async () => {
   const server: Server = new Server({
