@@ -1,3 +1,8 @@
+# Deployment
+
+look into this:
+https://www.netlify.com/
+
 # Debugging
 
 ## Debug Client
