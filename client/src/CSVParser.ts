@@ -17,7 +17,9 @@ export async function readCSVs(files: File[]) {
 
 async function validateJsons(jsons: any[]) {
   const contract = [jr.fromKeyValArray(csvHeaders.map(h => ({ key: h, value: '' })))];
-  return jc.typecheck(jsons, contract);
+  return jc.typecheck(jsons, contract, {
+    nullableKeys: ['calories', 'morning_weight_(lbs)', 'body_fat_percentage', 'muscle_mass_percentage'],
+  });
 }
 
 async function upsertDb(jsons: any) {
