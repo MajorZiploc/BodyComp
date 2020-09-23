@@ -6,8 +6,6 @@ import * as Joi from '@hapi/joi';
 import * as sql from 'sql-query';
 import * as ADODB from 'node-adodb';
 
-const connection = ADODB.open(config.connectionString);
-
 const init = async () => {
   const server: Server = new Server({
     port: config.port,
@@ -41,6 +39,7 @@ const init = async () => {
         .select(['WuName', 'WuLabel'])
         .where({ DyDate: sql.between(minDate, maxDate) })
         .build();
+      const connection = ADODB.open(config.connectionString);
       return connection.query(sqlQuery).then(data => data);
     },
 
@@ -55,6 +54,35 @@ const init = async () => {
           // bodyFatPercentage: Joi.number().positive(),
           // muscleMassPercentage: Joi.number().positive()
         }) as any,
+      },
+    },
+  });
+
+  const objectSchema = Joi.object()
+    .keys({
+      DyDate: Joi.date().required(),
+      DyCalories: Joi.number().integer().positive().allow(null).required(),
+      DyMorningWeight: Joi.number().positive().allow(null).required(),
+      DyBodyFatPercentage: Joi.number().positive().allow(null).required(),
+      DyMuscleMassPercentage: Joi.number().positive().allow(null).required(),
+      DyWeightUnitsId: Joi.number().positive().allow(null).required(),
+    })
+    .unknown(false);
+
+  const arraySchema = Joi.array().items(objectSchema);
+
+  const altSchema = Joi.alternatives().try(objectSchema, arraySchema);
+
+  server.route({
+    method: 'POST',
+    path: '/bulkUpload',
+    handler: (request: Request, h: ResponseToolkit) => {
+      const body = request.payload;
+      return { message: 'Upsert was successful' };
+    },
+    options: {
+      validate: {
+        payload: altSchema as any,
       },
     },
   });
