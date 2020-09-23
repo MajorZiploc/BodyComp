@@ -2,11 +2,13 @@ import React from 'react';
 import '../Styles/App.css';
 import HomeCharts from './HomeCharts';
 import Layout from './Shared/Layout';
+import CSVForm from './CSVForm';
 
 function App() {
   return (
     <div className='App'>
       <Layout />
+      <CSVForm />
       <HomeCharts />
       {/* <header className='App-header'>
         <Days />
