@@ -60,7 +60,11 @@ export default function SingleLineChart(props: SingleLineChartProps) {
                   day.DyBodyFatPercentage,
                   (100 - day.DyBodyFatPercentage - day.DyMuscleMassPercentage).toFixed(2),
                 ]}
-                labels={['Muscle Mass', 'Body Fat', 'Other']}
+                labels={[
+                  `Muscle Mass ${day.DyMuscleMassPercentage ?? '??'}%`,
+                  `Body Fat ${day.DyBodyFatPercentage ?? '??'}%`,
+                  `Other ${(100 - day.DyBodyFatPercentage - day.DyMuscleMassPercentage).toFixed(2)}%`,
+                ]}
               />
             ) : (
               <ul>
