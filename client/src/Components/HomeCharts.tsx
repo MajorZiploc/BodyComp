@@ -22,7 +22,7 @@ export default function HomeCharts() {
       setDays(await getMockDays({ minDate: startDate?.toLocaleDateString(), maxDate: endDate?.toLocaleDateString() }));
     };
     f();
-  }, []);
+  }, [startDate, endDate]);
 
   function event(e: any) {
     if (e.length > 0 && days !== undefined) {
