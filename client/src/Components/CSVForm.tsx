@@ -1,16 +1,21 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { Form, Button, FormGroup, FormFile } from 'react-bootstrap';
 
 function CSVForm() {
+  const [files, setFiles] = useState<File[]>();
+
   function onSubmit(e: any) {
-    var x = e.target.files[0];
-    console.log('submitted');
-    console.log(e);
+    const ns = files?.map(f => f.name);
   }
 
-  function onSelect(e: any) {
-    console.log('submitted');
-    console.log(e);
+  function onChangeFile(e: any) {
+    const fileList: FileList = e?.target?.files ?? undefined;
+    const files = [];
+    for (var i = 0; i < fileList.length; i++) {
+      files.push(fileList[i]);
+    }
+    setFiles(files);
   }
 
   return (
@@ -21,7 +26,7 @@ function CSVForm() {
           label='Upload Daily metrics CSV'
           multiple
           type='file'
-          onSelect={(e: any) => onSelect(e)}
+          onChange={(e: any) => onChangeFile(e)}
         />
         <Button variant='primary' type='submit'>
           Submit
