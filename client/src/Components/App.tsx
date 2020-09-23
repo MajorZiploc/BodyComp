@@ -3,24 +3,17 @@ import '../Styles/App.css';
 import HomeCharts from './HomeCharts';
 import Layout from './Shared/Layout';
 import CSVForm from './CSVForm';
+import { Link, BrowserRouter } from 'react-router-dom';
+import Router from './Router';
 
 function App() {
   return (
-    <div className='App'>
-      <Layout />
-      <CSVForm />
-      <HomeCharts />
-      {/* <header className='App-header'>
-        <Days />
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
-          Learn React
-        </a>
-      </header> */}
-    </div>
+    <BrowserRouter>
+      <div className='App'>
+        <Layout />
+        <Router />
+      </div>
+    </BrowserRouter>
   );
 }
 

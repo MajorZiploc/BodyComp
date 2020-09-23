@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 import { getMockDays, getDays } from '../data';
 import SingleLineChart from './SingleLineChart';
 import DatePicker from 'react-datepicker';
+import { withRouter } from 'react-router-dom';
 
-export default function HomeCharts() {
+function HomeCharts() {
   const [days, setDays] = useState<Day[]>();
   const firstDayWithWeightInfo = days?.find((d: any) => d.WuName && d.WuLabel);
   const labels = days?.map((d: Day) => new Date(d.DyDate).toLocaleDateString());
@@ -70,3 +71,5 @@ export default function HomeCharts() {
     </>
   );
 }
+
+export default withRouter(HomeCharts);
