@@ -1,12 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Form, Button, FormGroup, FormFile } from 'react-bootstrap';
+import { readCSVs } from '../CSVParser';
 
 function CSVForm() {
   const [files, setFiles] = useState<File[]>();
 
-  function onSubmit(e: any) {
-    const ns = files?.map(f => f.name);
+  async function onSubmit(e: any) {
+    const stuff = await readCSVs(files ?? []);
   }
 
   function onChangeFile(e: any) {
