@@ -37,7 +37,7 @@ function CSVForm() {
       setWeights(weights);
     };
     f();
-  });
+  }, []);
 
   function onChangeFile(e: any) {
     const fileList: FileList = e?.target?.files ?? undefined;
