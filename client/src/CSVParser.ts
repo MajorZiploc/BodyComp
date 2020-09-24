@@ -5,9 +5,10 @@ import { postDays } from './data';
 
 const csvHeaders = ['date', 'calories', 'morning_weight', 'body_fat_percentage', 'muscle_mass_percentage'];
 
-export async function upsertApi(files: File[]) {
+export async function upsertApi(files: File[], weightMeasureId: number) {
   const jsons = await readCSVs(files);
-  await upsertDb(jsons);
+  console.log('upsert');
+  await upsertDb(jsons, weightMeasureId);
   return true;
 }
 
@@ -23,13 +24,15 @@ async function validateJsons(jsons: any[]) {
   });
 }
 
-async function upsertDb(jsons: any) {
+async function upsertDb(jsons: any[], weightMeasureId: number) {
   try {
     if (!validateJsons(jsons)) {
       throw new Error('CSV headers where not found. Make sure they match the following:' + JSON.stringify(csvHeaders));
     } else {
-      const response = await postDays(jsons);
-      console.log('here');
+      jsons.forEach(j => (j['weight_units_id'] = weightMeasureId));
+      const body = jsons.map(j => jr.addField(j, 'weight-units-id', weightMeasureId));
+      console.log(JSON.stringify(body));
+      const response = await postDays(body);
       console.log(JSON.stringify(response));
       return response;
     }

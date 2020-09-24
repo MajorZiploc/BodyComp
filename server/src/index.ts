@@ -83,15 +83,14 @@ const init = async () => {
     },
   });
 
-  // TODO: rename these to match the csv file header names and the weight units name from the front end!!
   const objectSchema = Joi.object()
     .keys({
-      DyDate: Joi.date().required(),
-      DyCalories: Joi.number().integer().positive().allow(null).required(),
-      DyMorningWeight: Joi.number().positive().allow(null).required(),
-      DyBodyFatPercentage: Joi.number().positive().allow(null).required(),
-      DyMuscleMassPercentage: Joi.number().positive().allow(null).required(),
-      DyWeightUnitsId: Joi.number().positive().allow(null).required(),
+      date: Joi.date().required(),
+      calories: Joi.number().integer().positive().allow(null).required(),
+      morning_weight: Joi.number().positive().allow(null).required(),
+      body_fat_percentage: Joi.number().positive().allow(null).required(),
+      muscle_mass_percentage: Joi.number().positive().allow(null).required(),
+      weight_units_id: Joi.number().positive().allow(null).required(),
     })
     .unknown(false);
 
@@ -123,7 +122,7 @@ const init = async () => {
             ?,
             ?)
           `,
-          [j.DyDate, j.DyCalories, j.DyMorningWeight, j.DyBodyFatPercentage, j.DyMuscleMassPercentage]
+          [j.date, j.calories, j.morning_weight, j.body_fat_percentage, j.muscle_mass_percentage, j.weight_units_id]
         );
         await connection.execute(insert);
       });
@@ -155,6 +154,9 @@ const init = async () => {
         `;
 
       await connection.execute(upsert);
+
+      // Clean up staging table
+      await connection.execute(truncate);
 
       return { message: 'Upsert was successful' };
     },
