@@ -11,7 +11,7 @@ export interface DaysParams {
 
 function formatQueryParams(json?: any) {
   if (json === null || json === undefined) return '';
-  const qps = jr.toKeyValArray(json);
+  const qps = jr.toKeyValArray(json).filter(kv => kv.value);
   return qps.length === 0 ? '' : '?' + qps.map(ele => ele.key + '=' + ele.value).join('&');
 }
 
@@ -38,4 +38,21 @@ export async function getMockDays(queryParams?: DaysParams): Promise<Day[]> {
       queryParams?.maxDate === null ||
       (queryParams?.maxDate === undefined ? true : new Date(d.DyDate) <= new Date(queryParams?.maxDate))
   );
+}
+
+export async function postDays(days: any[]) {
+  // console.log('here: ' + JSON.stringify(days));
+  const url = urljoin(config.apiUrl, 'bulkUpload');
+  console.log(url);
+  return await fetch(url, {
+    method: 'post',
+    mode: 'cors',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(days),
+  }).then(async r => {
+    return await r.json();
+  });
 }

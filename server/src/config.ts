@@ -5,7 +5,10 @@ export const config = {
   routes: {
     cors: {
       origin: ['http://localhost:3000'], // an array of origins or 'ignore'
-      maxAge: 60,
+      maxAge: 86400,
+      headers: ['Authorization'], // an array of strings - 'Access-Control-Allow-Headers'
+      exposedHeaders: ['Accept'], // an array of exposed headers - 'Access-Control-Expose-Headers',
+      additionalExposedHeaders: ['Accept'], // an array of additional exposed headers
       credentials: true, // boolean - 'Access-Control-Allow-Credentials'
     },
   },

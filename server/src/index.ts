@@ -65,6 +65,7 @@ const init = async () => {
     },
   });
 
+  // TODO: rename these to match the csv file header names and the weight units name from the front end!!
   const objectSchema = Joi.object()
     .keys({
       DyDate: Joi.date().required(),

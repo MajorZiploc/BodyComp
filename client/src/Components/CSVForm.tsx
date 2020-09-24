@@ -35,6 +35,7 @@ function CSVForm() {
   return (
     <>
       <Form onSubmit={(e: any) => onSubmit(e)}>
+        // TODO: add drop down for weight units
         <FormGroup role='form'>
           <FormFile
             id='CSVFileUpload'
