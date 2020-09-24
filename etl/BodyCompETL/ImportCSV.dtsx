@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{30294F7E-ECE8-4D47-AB19-19C6F200EC27}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{5F17ED4F-0373-45B4-811F-DF13ACE285E5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -177,10 +177,10 @@
                       refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[DyMorningWeight]"
                       dataType="numeric"
                       errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="IgnoreFailure"
                       lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[DyMorningWeight]"
                       name="DyMorningWeight"
-                      precision="29"
+                      precision="7"
                       scale="3"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -188,20 +188,20 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[morning_weight_lbs]}) || [LEN]([TRIM](#{Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[morning_weight_lbs]})) == 0 ? NULL(DT_DECIMAL,3) : (DT_DECIMAL,3)(DT_R4)[TRIM](#{Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[morning_weight_lbs]})</property>
+                          name="Expression">[ISNULL](#{Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[morning_weight_lbs]}) || [LEN]([TRIM](#{Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[morning_weight_lbs]})) == 0 ? NULL(DT_NUMERIC,7,3) : (DT_NUMERIC,7,3)[TRIM](#{Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[morning_weight_lbs]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(morning_weight_lbs) || LEN(TRIM(morning_weight_lbs)) == 0 ? NULL(DT_DECIMAL,3) : (DT_DECIMAL,3)(DT_R4)TRIM(morning_weight_lbs)</property>
+                          name="FriendlyExpression">ISNULL(morning_weight_lbs) || LEN(TRIM(morning_weight_lbs)) == 0 ? NULL(DT_NUMERIC,7,3) : (DT_NUMERIC,7,3)TRIM(morning_weight_lbs)</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[DyCalories]"
                       dataType="numeric"
                       errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="IgnoreFailure"
                       lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[DyCalories]"
                       name="DyCalories"
                       precision="29"
@@ -225,7 +225,7 @@
                       refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[DyBodyFatPercentage]"
                       dataType="numeric"
                       errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="IgnoreFailure"
                       lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[DyBodyFatPercentage]"
                       name="DyBodyFatPercentage"
                       precision="7"
@@ -249,7 +249,7 @@
                       refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[DyMuscleMassPercentage]"
                       dataType="numeric"
                       errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="IgnoreFailure"
                       lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[DyMuscleMassPercentage]"
                       name="DyMuscleMassPercentage"
                       precision="7"
@@ -815,7 +815,7 @@ where [refTable].[DyDate] = ?</property>
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DyMorningWeight]"
                       cachedDataType="numeric"
                       cachedName="DyMorningWeight"
-                      cachedPrecision="29"
+                      cachedPrecision="7"
                       cachedScale="3"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DyMorningWeight]"
                       lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[DyMorningWeight]" />
@@ -1005,7 +1005,7 @@ where [refTable].[DyDate] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-103.80638671875,-17.609375,111.6127734375,11.609375"
+              BoundingBox="-112.6750390625,-22,129.350078125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1108,9 +1108,7 @@ where [refTable].[DyDate] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-18,23.75,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
