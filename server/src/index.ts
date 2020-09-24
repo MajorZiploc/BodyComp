@@ -2,8 +2,7 @@ import { Server, Request, ResponseToolkit } from '@hapi/hapi';
 import { jsonComparer as jc, jsonRefactor as jr } from 'json-test-utility';
 import { config } from './config';
 import * as Joi from '@hapi/joi';
-//@ts-ignore
-import * as sql from 'sql-query';
+import * as sqlstring from 'sqlstring';
 import * as ADODB from 'node-adodb';
 
 const init = async () => {
@@ -27,18 +26,26 @@ const init = async () => {
     path: '/day',
     handler: (request: Request, h: ResponseToolkit) => {
       var p = request.query;
-      var sqlSelect = sql.Query('MSSQL').select();
       const dateFloor = new Date('01/01/1753');
       const dateCeiling = new Date('12/31/9999');
       const minDate = p.minDate != null ? new Date(p.minDate) : dateFloor;
       const maxDate = p.maxDate != null ? new Date(p.maxDate) : dateCeiling;
-      const sqlQuery = sqlSelect
-        .from('day')
-        .select(['DyDate', 'DyCalories', 'DyMorningWeight', 'DyBodyFatPercentage', 'DyMuscleMassPercentage'])
-        .from('weightunits', 'WuId', 'DyWeightUnitsId')
-        .select(['WuName', 'WuLabel'])
-        .where({ DyDate: sql.between(minDate, maxDate) })
-        .build();
+      var sqlQuery = sqlstring.format(
+        `SELECT DyDate
+          ,DyCalories
+          ,DyMorningWeight
+          ,DyBodyFatPercentage
+          ,DyMuscleMassPercentage
+          ,WuLabel
+          ,WuName
+        FROM dbo.Day as d
+        INNER JOIN dbo.WeightUnits AS wu
+          ON d.DyWeightUnitsId = wu.WuId
+        WHERE d.DyDate >= ?
+        AND d.DyDate <= ?
+        `,
+        [minDate, maxDate]
+      );
       const connection = ADODB.open(config.connectionString);
       return connection.query(sqlQuery).then(data => data);
     },

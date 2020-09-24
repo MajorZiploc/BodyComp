@@ -338,6 +338,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.10.1.tgz#cc323bad8e8a533d4822f45ce4e5326f36e42177"
   integrity sha512-aYNbO+FZ/3KGeQCEkNhHFRIzBOUgc7QvcVNKXbfnhDkSfwUv91JsQQa10rDgKSTSLkXZ1UIyPe4FJJNVgw1xWQ==
 
+"@types/sqlstring@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@types/sqlstring/-/sqlstring-2.2.1.tgz#5c1459ce14be0e74bd9648097bbee58f5c669f20"
+  integrity sha512-aoPCWl1XeUuVXslgwN06FKhVyJq8rqlKk2czbEnk9+R0OQd+JPJDmOjySnULGTeZzr6YB6+3VyFrEiOlFoMgYA==
+
 "@types/url-join@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/url-join/-/url-join-4.0.0.tgz#72eff71648a429c7d4acf94e03780e06671369bd"
@@ -422,6 +427,11 @@ sql-query@^0.1.27:
   version "0.1.27"
   resolved "https://registry.yarnpkg.com/sql-query/-/sql-query-0.1.27.tgz#f854672e1e3c09df773d8b343c6ad0902f92d905"
   integrity sha512-XXK6W6n0D18YspS/7TziKln8ij9RUnpDzl+qr2hUOqEqrhuilGPhbKBYQ1dkfYoQ0ViNtr2y8RKut06nkAkx2w==
+
+sqlstring@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/sqlstring/-/sqlstring-2.3.2.tgz#cdae7169389a1375b18e885f2e60b3e460809514"
+  integrity sha512-vF4ZbYdKS8OnoJAWBmMxCQDkiEBkGQYU7UZPtL8flbDRSNkhaXvRJ279ZtI6M+zDaQovVU4tuRgzK5fVhvFAhg==
 
 ts-node@^9.0.0:
   version "9.0.0"
