@@ -55,7 +55,10 @@ function CSVForm() {
 
                 <Dropdown.Menu>
                   {weights.map(w => (
-                    <Dropdown.Item href={`#/action-${w.WuId}`}>{`${w.WuName} (${w.WuLabel})`}</Dropdown.Item>
+                    <Dropdown.Item
+                      key={w.WuId}
+                      href={`#/action-${w.WuId}`}
+                    >{`${w.WuName} (${w.WuLabel})`}</Dropdown.Item>
                   ))}
                 </Dropdown.Menu>
               </Dropdown>
