@@ -1,8 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Form, Button, FormGroup, FormFile, Toast } from 'react-bootstrap';
+import { Form, Button, FormGroup, FormFile, Toast, Dropdown } from 'react-bootstrap';
 import { upsertApi } from '../CSVParser';
 import { withRouter } from 'react-router-dom';
+import { Weight } from '../models';
+import { getWeights } from '../data';
 
 interface ToastInfo {
   message: string;
@@ -13,6 +15,7 @@ interface ToastInfo {
 function CSVForm() {
   const [files, setFiles] = useState<File[]>();
   const [toast, setToast] = useState<ToastInfo>();
+  const [weights, setWeights] = useState<Weight[]>();
 
   async function onSubmit(e: any) {
     try {
@@ -22,6 +25,13 @@ function CSVForm() {
       setToast({ message: 'Failed to upload CSV(s)' + err, variant: 'danger', delay: 10000 });
     }
   }
+
+  useEffect(() => {
+    const f = async () => {
+      setWeights(await getWeights());
+    };
+    f();
+  });
 
   function onChangeFile(e: any) {
     const fileList: FileList = e?.target?.files ?? undefined;
@@ -34,29 +44,43 @@ function CSVForm() {
 
   return (
     <>
-      <Form onSubmit={(e: any) => onSubmit(e)}>
-        // TODO: add drop down for weight units
-        <FormGroup role='form'>
-          <FormFile
-            id='CSVFileUpload'
-            label='Upload Daily metrics CSV'
-            multiple
-            type='file'
-            onChange={(e: any) => onChangeFile(e)}
-          />
-          <Button variant='primary' type='submit'>
-            Submit
-          </Button>
-        </FormGroup>
-      </Form>
-      {toast && (
-        <Toast className={'alert-' + toast.variant}>
-          <Toast.Header>
-            <strong className='mr-auto'>Bootstrap</strong>
-            <small>11 mins ago</small>
-          </Toast.Header>
-          <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
-        </Toast>
+      {weights && (
+        <>
+          <Form onSubmit={(e: any) => onSubmit(e)}>
+            <FormGroup role='form'>
+              <Dropdown>
+                <Dropdown.Toggle variant='success' id='dropdown-basic'>
+                  Weight units
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  {weights.map(w => (
+                    <Dropdown.Item href={`#/action-${w.WuId}`}>{`${w.WuName} (${w.WuLabel})`}</Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+              <FormFile
+                id='CSVFileUpload'
+                label='Upload Daily metrics CSV'
+                multiple
+                type='file'
+                onChange={(e: any) => onChangeFile(e)}
+              />
+              <Button variant='primary' type='submit'>
+                Submit
+              </Button>
+            </FormGroup>
+          </Form>
+          {toast && (
+            <Toast className={'alert-' + toast.variant}>
+              <Toast.Header>
+                <strong className='mr-auto'>Bootstrap</strong>
+                <small>11 mins ago</small>
+              </Toast.Header>
+              <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
+            </Toast>
+          )}
+        </>
       )}
     </>
   );

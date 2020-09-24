@@ -16,3 +16,9 @@ export type Day = {
   DyBodyFatPercentage: number | null;
   DyMuscleMassPercentage: number | null;
 };
+
+export type Weight = {
+  WuId: number;
+  WuLabel: string | null;
+  WuName: string | null;
+};

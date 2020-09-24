@@ -1,7 +1,7 @@
 import { config } from './config';
 import urljoin from 'url-join';
 import { jsonRefactor as jr } from 'json-test-utility';
-import { Day } from './models';
+import { Day, Weight } from './models';
 import MockDays from './MockDays.json';
 
 export interface DaysParams {
@@ -17,6 +17,18 @@ function formatQueryParams(json?: any) {
 
 export async function getDays(queryParams?: DaysParams): Promise<Day[]> {
   const url = urljoin(config.apiUrl, 'day', formatQueryParams(queryParams));
+  return fetch(url, {
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then(async r => {
+    return await r.json();
+  });
+}
+
+export async function getWeights(): Promise<Weight[]> {
+  const url = urljoin(config.apiUrl, 'weight');
   return fetch(url, {
     mode: 'cors',
     headers: {
