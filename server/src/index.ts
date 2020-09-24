@@ -83,8 +83,60 @@ const init = async () => {
   server.route({
     method: 'POST',
     path: '/bulkUpload',
-    handler: (request: Request, h: ResponseToolkit) => {
-      const body = request.payload;
+    handler: async (request: Request, h: ResponseToolkit) => {
+      const body = request.payload as any[];
+      const connection = ADODB.open(config.connectionString);
+      const truncate = `TRUNCATE TABLE dbo.StagingBulkUpload`;
+      await connection.execute(truncate);
+
+      body.forEach(async (j: any) => {
+        const insert = sqlstring.format(
+          `INSERT INTO dbo.StagingBulkUpload
+            (DyDate,
+            DyCalories,
+            DyMorningWeight,
+            DyBodyFatPercentage,
+            DyMuscleMassPercentage)
+          VALUES
+            (?,
+            ?,
+            ?,
+            ?,
+            ?)
+          `,
+          [j.DyDate, j.DyCalories, j.DyMorningWeight, j.DyBodyFatPercentage, j.DyMuscleMassPercentage]
+        );
+        await connection.execute(insert);
+      });
+
+      const upsert = `MERGE dbo.Day AS [Target]
+          USING (SELECT 
+          DyId,
+          DyDate,
+          DyCalories,
+          DyMorningWeight,
+          DyBodyFatPercentage,
+          DyMuscleMassPercentage
+          FROM dbo.StagingBulkUpload AS sbu) AS [Source] 
+          ON [Target].DyDate = [Source].DyDate
+          WHEN MATCHED THEN
+            UPDATE SET 
+            [Target].DyCalories=Source.DyCalories,
+            [Target].DyMorningWeight=Source.DyMorningWeight,
+            [Target].DyBodyFatPercentage=Source.DyBodyFatPercentage,
+            [Target].DyMuscleMassPercentage=Source.DyMuscleMassPercentage
+          WHEN NOT MATCHED THEN
+            INSERT 
+            (DyDate,
+            DyCalories,
+            DyMorningWeight,
+            DyBodyFatPercentage,
+            DyMuscleMassPercentage
+            ) VALUES (Source.DyDate,[Source].DyCalories, Source.DyMorningWeight, Source.DyBodyFatPercentage, Source.DyMuscleMassPercentage);
+        `;
+
+      await connection.execute(upsert);
+
       return { message: 'Upsert was successful' };
     },
     options: {
