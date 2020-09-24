@@ -51,7 +51,7 @@ function CSVForm() {
   function onWeightSelect(e: any) {
     const selectedId = e?.target?.value;
     const weight = weights?.find(w => '' + w.WuId === selectedId);
-    setWeightMeasureId(weight?.WuId + '');
+    setWeightMeasureId(weight?.WuId);
   }
 
   return (
