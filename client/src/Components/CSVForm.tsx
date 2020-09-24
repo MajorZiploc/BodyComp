@@ -16,12 +16,12 @@ function CSVForm() {
   const [files, setFiles] = useState<File[]>();
   const [toast, setToast] = useState<ToastInfo>();
   const [weights, setWeights] = useState<Weight[]>();
-  const [weightMeasureId, setWeightMeasureId] = useState<string>('1');
+  const [weightMeasureId, setWeightMeasureId] = useState<number>();
 
   async function onSubmit(e: any) {
     try {
       if (weightMeasureId) {
-        const success = await upsertApi(files ?? [], JSON.parse(weightMeasureId));
+        const success = await upsertApi(files ?? [], weightMeasureId);
         setToast({ message: 'Success', variant: 'success', delay: 3000 });
       }
     } catch (err) {
@@ -31,7 +31,10 @@ function CSVForm() {
 
   useEffect(() => {
     const f = async () => {
-      setWeights(await getWeights());
+      const weights = await getWeights();
+      const firstWeight = weights.find(w => w)?.WuId ?? undefined;
+      setWeightMeasureId(firstWeight);
+      setWeights(weights);
     };
     f();
   });
@@ -62,7 +65,7 @@ function CSVForm() {
                 <Form.Control
                   as='select'
                   onChange={(e: any) => onWeightSelect(e)}
-                  defaultValue={weightMeasureId}
+                  defaultValue={weightMeasureId + ''}
                   custom
                 >
                   {weights.map(w => (
