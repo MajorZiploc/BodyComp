@@ -16,6 +16,7 @@ function CSVForm() {
   const [files, setFiles] = useState<File[]>();
   const [toast, setToast] = useState<ToastInfo>();
   const [weights, setWeights] = useState<Weight[]>();
+  const [weightMeasure, setWeightMeasure] = useState<Weight>();
 
   async function onSubmit(e: any) {
     try {
@@ -42,6 +43,12 @@ function CSVForm() {
     setFiles(files);
   }
 
+  function onWeightSelect(e: any) {
+    const selectedId = e?.target?.value;
+    const weight = weights?.find(w => '' + w.WuId === selectedId);
+    setWeightMeasure(weight);
+  }
+
   return (
     <>
       {weights && (
@@ -50,7 +57,7 @@ function CSVForm() {
             <FormGroup role='form'>
               <Form.Group controlId='exampleForm.SelectCustom'>
                 <Form.Label>Custom select</Form.Label>
-                <Form.Control as='select' custom>
+                <Form.Control as='select' onChange={(e: any) => onWeightSelect(e)} custom>
                   {weights.map(w => (
                     <option key={w.WuId} value={w.WuId}>{`${w.WuName} (${w.WuLabel})`}</option>
                   ))}
