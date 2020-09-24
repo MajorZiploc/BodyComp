@@ -48,20 +48,14 @@ function CSVForm() {
         <>
           <Form onSubmit={(e: any) => onSubmit(e)}>
             <FormGroup role='form'>
-              <Dropdown>
-                <Dropdown.Toggle variant='success' id='dropdown-basic'>
-                  Weight units
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
+              <Form.Group controlId='exampleForm.SelectCustom'>
+                <Form.Label>Custom select</Form.Label>
+                <Form.Control as='select' custom>
                   {weights.map(w => (
-                    <Dropdown.Item
-                      key={w.WuId}
-                      href={`#/action-${w.WuId}`}
-                    >{`${w.WuName} (${w.WuLabel})`}</Dropdown.Item>
+                    <option key={w.WuId} value={w.WuId}>{`${w.WuName} (${w.WuLabel})`}</option>
                   ))}
-                </Dropdown.Menu>
-              </Dropdown>
+                </Form.Control>
+              </Form.Group>
               <FormFile
                 id='CSVFileUpload'
                 label='Upload Daily metrics CSV'
