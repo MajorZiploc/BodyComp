@@ -23,6 +23,24 @@ const init = async () => {
 
   server.route({
     method: 'GET',
+    path: '/weight',
+    handler: async (request: Request, h: ResponseToolkit) => {
+      var sqlQuery = sqlstring.format(
+        `SELECT 
+          WuId
+          ,WuLabel
+          ,WuName
+        FROM dbo.WeightUnits
+        `,
+        []
+      );
+      const connection = ADODB.open(config.connectionString);
+      return await connection.query(sqlQuery);
+    },
+  });
+
+  server.route({
+    method: 'GET',
     path: '/day',
     handler: (request: Request, h: ResponseToolkit) => {
       var p = request.query;
