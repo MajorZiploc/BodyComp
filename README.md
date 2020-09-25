@@ -43,3 +43,4 @@ Debug using Server in .vscode
 11. Migrate Day table to have a user id column
 12. Create automated build/deployment
 13. Creating hosting for the site
+14. Create TRELLO board with cards for all the todos
