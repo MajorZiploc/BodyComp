@@ -49,3 +49,5 @@ Debug using Server in .vscode
 17. DONE ----- Fix toast on post of bulk upload CSV
 18. Add CSV validation to clear number formatting before passing off to post bulkUpload call
 19. DONE ---------- Add CSV loading image when post is occurring to bulkUpload post
+20. Add optional should_delete column to csv so that we can do the D is CRUD. This will allow for complete crud through csv's
+21. Clean up csv parse process. The validate columns check may not be needed. Do testing with the csv tool to see if it doesnt care about the order of the column headers
