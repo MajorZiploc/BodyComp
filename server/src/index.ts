@@ -9,7 +9,42 @@ const init = async () => {
   const server: Server = new Server({
     port: config.port,
     host: config.host,
-    routes: config.routes,
+    routes: {
+      cors: {
+        origin: ['http://localhost:3000'], // an array of origins or 'ignore'
+        maxAge: 86400,
+        headers: ['Accept', 'Authorization', 'Content-Type', 'If-None-Match', 'Access-Control-Request-Method'], // an array of strings - 'Access-Control-Allow-Headers'
+        exposedHeaders: ['Accept', 'Authorization', 'Content-Type', 'If-None-Match', 'Access-Control-Request-Method'], // an array of exposed headers - 'Access-Control-Expose-Headers',
+        additionalExposedHeaders: [
+          'WWW-Authenticate',
+          'Server-Authorization',
+          'Accept',
+          'Access-Control-Allow-Origin',
+          'Access-Control-Request-Method',
+          'Allow-Origin',
+          'Origin',
+          'access-control-allow-origin',
+          'access-control-request-method',
+          'allow-origin',
+          'origin',
+        ], // an array of additional exposed headers
+        additionalHeaders: [
+          'Access-Control-Allow-Origin',
+          'Access-Control-Request-Method',
+          'Allow-Origin',
+          'Origin',
+          'access-control-allow-origin',
+          'access-control-request-method',
+          'allow-origin',
+          'origin',
+        ],
+        credentials: true, // boolean - 'Access-Control-Allow-Credentials'
+      },
+      payload: {
+        allow: ['application/json'],
+      },
+      security: false,
+    },
   });
 
   server.route({
@@ -90,7 +125,7 @@ const init = async () => {
       morning_weight: Joi.number().positive().allow(null).required(),
       body_fat_percentage: Joi.number().positive().allow(null).required(),
       muscle_mass_percentage: Joi.number().positive().allow(null).required(),
-      weight_units_id: Joi.number().positive().allow(null).required(),
+      weight_units_id: Joi.number().integer().positive().allow(null).required(),
     })
     .unknown(false);
 

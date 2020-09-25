@@ -63,7 +63,16 @@ export async function postDays(days: any[]) {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(days),
+    body: JSON.stringify([
+      {
+        date: '7/21/20',
+        calories: '2208',
+        morning_weight: null,
+        body_fat_percentage: null,
+        muscle_mass_percentage: null,
+        weight_units_id: 1,
+      },
+    ]),
   }).then(async r => {
     return await r.json();
   });
