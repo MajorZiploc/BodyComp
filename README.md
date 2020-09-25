@@ -33,7 +33,7 @@ Debug using Server in .vscode
    Can be used to show how metrics were gotten for a given day
 2. Add a Scale CRUD page for user
 3. Add a Weight Units CRUD page for user
-4. Find new library for CSV reading and wire the post bulk upload function
+4. DONE ---- Find new library for CSV reading and wire the post bulk upload function
 5. Add Scale select dropdown in the bulk upload page for the CSV upload process
 6. Add a page to insert a single day of data and a post to accept this data
 7. Add a CRUD page for the Day table for a user
@@ -47,3 +47,5 @@ Debug using Server in .vscode
 15. Make sure db connections are closed in the server side
 16. Add export to csv for the day table data. Allow for ALL, or a date range to export
 17. Fix toast on post of bulk upload CSV
+18. Add CSV validation to clear number formatting before passing off to post bulkUpload call
+19. Add CSV loading image when post is occurring to bulkUpload post

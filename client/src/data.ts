@@ -59,16 +59,7 @@ export async function postDays(days: any[]) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify([
-      {
-        date: '7/21/4444',
-        calories: '666667',
-        morning_weight: 234,
-        body_fat_percentage: 321,
-        muscle_mass_percentage: 2222,
-        weight_units_id: 2,
-      },
-    ]),
+    body: JSON.stringify(days),
   })
     .then(e => console.log('hapi path ' + JSON.stringify(e)))
     .catch((e: any) => console.log('sad path ' + e));

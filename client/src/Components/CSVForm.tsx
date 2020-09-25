@@ -19,15 +19,14 @@ function CSVForm() {
   const [weightMeasureId, setWeightMeasureId] = useState<number>();
 
   async function onSubmit() {
-    await postDays([]);
-    // try {
-    //   if (weightMeasureId) {
-    //     const success = await upsertApi(files ?? [], weightMeasureId);
-    //     setToast({ message: 'Success', variant: 'success', delay: 3000 });
-    //   }
-    // } catch (err) {
-    //   setToast({ message: 'Failed to upload CSV(s)' + err, variant: 'danger', delay: 10000 });
-    // }
+    try {
+      if (weightMeasureId) {
+        const success = await upsertApi(files ?? [], weightMeasureId);
+        setToast({ message: 'Success', variant: 'success', delay: 3000 });
+      }
+    } catch (err) {
+      setToast({ message: 'Failed to upload CSV(s)' + err, variant: 'danger', delay: 10000 });
+    }
   }
 
   useEffect(() => {
