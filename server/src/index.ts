@@ -24,7 +24,6 @@ const init = async () => {
     method: 'GET',
     path: '/weight',
     handler: async (request: Request, h: ResponseToolkit) => {
-      console.log('weight');
       var sqlQuery = sqlstring.format(
         `SELECT 
           WuId
@@ -61,6 +60,7 @@ const init = async () => {
           ON d.DyWeightUnitsId = wu.WuId
         WHERE d.DyDate >= ?
         AND d.DyDate <= ?
+        ORDER BY d.DyDate
         `,
         [minDate, maxDate]
       );
@@ -102,9 +102,7 @@ const init = async () => {
     method: 'POST',
     path: '/bulkUpload',
     handler: async (request: Request, h: ResponseToolkit) => {
-      console.log('hi');
       const body = request.payload as any[];
-      console.log(body);
       const connection = ADODB.open(config.connectionString);
       const truncate = `TRUNCATE TABLE dbo.StagingBulkUpload`;
       await connection.execute(truncate);

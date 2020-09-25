@@ -20,7 +20,6 @@ function HomeCharts() {
 
   useEffect(() => {
     const f = async () => {
-      await postDays([]);
       setDays(await getDays({ minDate: startDate?.toLocaleDateString(), maxDate: endDate?.toLocaleDateString() }));
     };
     f();

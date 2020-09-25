@@ -44,8 +44,8 @@ Debug using Server in .vscode
 12. Create automated build/deployment
 13. Creating hosting for the site
 14. Create TRELLO board with cards for all the todos
-15. Make sure db connections are closed in the server side
-16. Add export to csv for the day table data. Allow for ALL, or a date range to export
-17. Fix toast on post of bulk upload CSV
+15. IMPORTANT ----- Make sure db connections are closed in the server side
+16. NEXT ------ Add export to csv for the day table data. Allow for ALL, or a date range to export
+17. DONE ----- Fix toast on post of bulk upload CSV
 18. Add CSV validation to clear number formatting before passing off to post bulkUpload call
-19. Add CSV loading image when post is occurring to bulkUpload post
+19. DONE ---------- Add CSV loading image when post is occurring to bulkUpload post
