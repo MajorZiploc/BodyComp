@@ -8,7 +8,6 @@ import { getWeights, postDays } from '../data';
 import { Fate } from '../Fate';
 
 interface ToastInfo {
-  message: string;
   variant: string;
   header: string;
   body: string;
@@ -28,17 +27,20 @@ function CSVForm() {
   async function onSubmit() {
     try {
       if (weightMeasureId) {
+        setToast({
+          variant: 'info',
+          header: 'Processing',
+          body: 'Processing request... Please wait.',
+        });
         const response = await upsertApi(files ?? [], weightMeasureId);
         if (Fate.SUCCESS === response.fate) {
           setToast({
-            message: response.fate,
             variant: 'success',
             header: response.fate,
             body: 'Data was successfully uploaded! ' + getFileNamesPrompt(files),
           });
         } else {
           setToast({
-            message: response.fate,
             variant: 'danger',
             header: response.fate,
             body: 'Data failed to upload.\n' + getFileNamesPrompt(files) + JSON.stringify(response.result),
@@ -47,7 +49,6 @@ function CSVForm() {
       }
     } catch (err) {
       setToast({
-        message: 'Failure',
         variant: 'danger',
         header: 'Extreme Failure',
         body: 'Data failed to upload.\n' + getFileNamesPrompt(files) + err,
