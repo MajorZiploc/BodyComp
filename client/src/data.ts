@@ -40,7 +40,6 @@ export async function getWeights(): Promise<Weight[]> {
 }
 
 export async function getMockDays(queryParams?: DaysParams): Promise<Day[]> {
-  console.log(queryParams);
   return MockDays.filter(
     d =>
       queryParams?.minDate === null ||
@@ -55,7 +54,6 @@ export async function getMockDays(queryParams?: DaysParams): Promise<Day[]> {
 export async function postDays(days: any[]) {
   // console.log('here: ' + JSON.stringify(days));
   const url = urljoin(config.apiUrl, 'bulkUpload');
-  console.log(url);
   return await fetch(url, {
     method: 'post',
     headers: {

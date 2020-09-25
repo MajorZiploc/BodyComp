@@ -1,5 +1,4 @@
 import { Server, Request, ResponseToolkit } from '@hapi/hapi';
-import { jsonComparer as jc, jsonRefactor as jr } from 'json-test-utility';
 import { config } from './config';
 import * as Joi from '@hapi/joi';
 import * as sqlstring from 'sqlstring';
@@ -9,19 +8,7 @@ const init = async () => {
   const server: Server = new Server({
     port: config.port,
     host: config.host,
-    routes: {
-      cors: {
-        origin: ['http://localhost:3000'], // an array of origins or 'ignore'
-        maxAge: 86400,
-        headers: ['Accept', 'Authorization', 'Content-Type', 'If-None-Match', 'Access-Control-Request-Method'], // an array of strings - 'Access-Control-Allow-Headers'
-        exposedHeaders: ['Accept', 'Authorization', 'Content-Type', 'If-None-Match', 'Access-Control-Request-Method'], // an array of exposed headers - 'Access-Control-Expose-Headers',
-        credentials: true, // boolean - 'Access-Control-Allow-Credentials'
-      },
-      payload: {
-        allow: ['application/json'],
-      },
-      security: false,
-    },
+    routes: config.routes,
   });
 
   server.route({
