@@ -37,3 +37,9 @@ Debug using Server in .vscode
 5. Add Scale select dropdown in the bulk upload page for the CSV upload process
 6. Add a page to insert a single day of data and a post to accept this data
 7. Add a CRUD page for the Day table for a user
+8. Create automated UI tests
+9. Create automated API tests
+10. Add authorization for user login with third party login
+11. Migrate Day table to have a user id column
+12. Create automated build/deployment
+13. Creating hosting for the site
