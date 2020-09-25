@@ -44,3 +44,4 @@ Debug using Server in .vscode
 12. Create automated build/deployment
 13. Creating hosting for the site
 14. Create TRELLO board with cards for all the todos
+15. Make sure db connections are closed in the server side
