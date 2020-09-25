@@ -1,14 +1,15 @@
 import { jsonComparer as jc, jsonRefactor as jr } from 'json-test-utility';
 import * as _ from 'lodash';
 import { postDays } from './data';
+import { Fate } from './Fate';
 
 const csvHeaders = ['date', 'calories', 'morning_weight', 'body_fat_percentage', 'muscle_mass_percentage'];
 
 export async function upsertApi(files: File[], weightMeasureId: number) {
   const jsons = await readCSVs(files);
   // console.log('upsert');
-  await upsertDb(jsons, weightMeasureId);
-  return true;
+  const response = await upsertDb(jsons, weightMeasureId);
+  return response;
 }
 
 export async function readCSVs(files: File[]) {
@@ -32,11 +33,10 @@ async function upsertDb(jsons: any[], weightMeasureId: number) {
       console.log(JSON.stringify(body));
       const response = await postDays(body);
       console.log(JSON.stringify(response));
-      return response;
+      return { fate: Fate.SUCCESS, result: response };
     }
   } catch (err) {
-    console.log(err);
-    return err;
+    return { fate: Fate.FAILURE, result: err };
   }
 }
 

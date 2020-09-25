@@ -5,11 +5,13 @@ import { upsertApi } from '../CSVParser';
 import { withRouter } from 'react-router-dom';
 import { Weight } from '../models';
 import { getWeights, postDays } from '../data';
+import { Fate } from '../Fate';
 
 interface ToastInfo {
   message: string;
   variant: string;
-  delay: number;
+  header: string;
+  body: string;
 }
 
 function CSVForm() {
@@ -18,14 +20,38 @@ function CSVForm() {
   const [weights, setWeights] = useState<Weight[]>();
   const [weightMeasureId, setWeightMeasureId] = useState<number>();
 
+  function getFileNamesPrompt(files: File[] | undefined) {
+    if (files) return 'Files: ' + files.map(f => f.name) + '.\n';
+    else return '';
+  }
+
   async function onSubmit() {
     try {
       if (weightMeasureId) {
-        const success = await upsertApi(files ?? [], weightMeasureId);
-        setToast({ message: 'Success', variant: 'success', delay: 3000 });
+        const response = await upsertApi(files ?? [], weightMeasureId);
+        if (Fate.SUCCESS === response.fate) {
+          setToast({
+            message: response.fate,
+            variant: 'success',
+            header: response.fate,
+            body: 'Data was successfully uploaded! ' + getFileNamesPrompt(files),
+          });
+        } else {
+          setToast({
+            message: response.fate,
+            variant: 'danger',
+            header: response.fate,
+            body: 'Data failed to upload.\n' + getFileNamesPrompt(files) + JSON.stringify(response.result),
+          });
+        }
       }
     } catch (err) {
-      setToast({ message: 'Failed to upload CSV(s)' + err, variant: 'danger', delay: 10000 });
+      setToast({
+        message: 'Failure',
+        variant: 'danger',
+        header: 'Extreme Failure',
+        body: 'Data failed to upload.\n' + getFileNamesPrompt(files) + err,
+      });
     }
   }
 
@@ -86,12 +112,11 @@ function CSVForm() {
             </FormGroup>
           </Form>
           {toast && (
-            <Toast className={'alert-' + toast.variant}>
+            <Toast className={'text-white bg-' + toast.variant}>
               <Toast.Header>
-                <strong className='mr-auto'>Bootstrap</strong>
-                <small>11 mins ago</small>
+                <strong className='mr-auto'>{toast.header}</strong>
               </Toast.Header>
-              <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
+              <Toast.Body>{toast.body}</Toast.Body>
             </Toast>
           )}
         </>
