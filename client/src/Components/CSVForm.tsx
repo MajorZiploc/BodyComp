@@ -4,7 +4,7 @@ import { Form, Button, FormGroup, FormFile, Toast, Dropdown } from 'react-bootst
 import { upsertApi } from '../CSVParser';
 import { withRouter } from 'react-router-dom';
 import { Weight } from '../models';
-import { getWeights } from '../data';
+import { getWeights, postDays } from '../data';
 
 interface ToastInfo {
   message: string;
@@ -18,15 +18,16 @@ function CSVForm() {
   const [weights, setWeights] = useState<Weight[]>();
   const [weightMeasureId, setWeightMeasureId] = useState<number>();
 
-  async function onSubmit(e: any) {
-    try {
-      if (weightMeasureId) {
-        const success = await upsertApi(files ?? [], weightMeasureId);
-        setToast({ message: 'Success', variant: 'success', delay: 3000 });
-      }
-    } catch (err) {
-      setToast({ message: 'Failed to upload CSV(s)' + err, variant: 'danger', delay: 10000 });
-    }
+  async function onSubmit() {
+    await postDays([]);
+    // try {
+    //   if (weightMeasureId) {
+    //     const success = await upsertApi(files ?? [], weightMeasureId);
+    //     setToast({ message: 'Success', variant: 'success', delay: 3000 });
+    //   }
+    // } catch (err) {
+    //   setToast({ message: 'Failed to upload CSV(s)' + err, variant: 'danger', delay: 10000 });
+    // }
   }
 
   useEffect(() => {
@@ -58,7 +59,7 @@ function CSVForm() {
     <>
       {weights && (
         <>
-          <Form onSubmit={(e: any) => onSubmit(e)}>
+          <Form>
             <FormGroup role='form'>
               <Form.Group controlId='exampleForm.SelectCustom'>
                 <Form.Label>Custom select</Form.Label>
@@ -80,7 +81,7 @@ function CSVForm() {
                 type='file'
                 onChange={(e: any) => onChangeFile(e)}
               />
-              <Button variant='primary' type='submit'>
+              <Button variant='primary' onClick={() => onSubmit()}>
                 Submit
               </Button>
             </FormGroup>
