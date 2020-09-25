@@ -1,4 +1,3 @@
-import * as csv from 'csvtojson';
 import { jsonComparer as jc, jsonRefactor as jr } from 'json-test-utility';
 import * as _ from 'lodash';
 import { postDays } from './data';
@@ -6,14 +5,14 @@ import { postDays } from './data';
 const csvHeaders = ['date', 'calories', 'morning_weight', 'body_fat_percentage', 'muscle_mass_percentage'];
 
 export async function upsertApi(files: File[], weightMeasureId: number) {
-  const jsons = await readCSVs(files);
-  console.log('upsert');
-  await upsertDb(jsons, weightMeasureId);
+  const jsons = await readCSVs(files, weightMeasureId);
+  // console.log('upsert');
+  // await upsertDb(jsons, weightMeasureId);
   return true;
 }
 
-export async function readCSVs(files: File[]) {
-  const jsons = _.flatten(await Promise.all(files.map(readCSV)));
+export async function readCSVs(files: File[], weightMeasureId: number) {
+  const jsons = _.flatten(await Promise.all(files.map(f => readCSV(f, weightMeasureId))));
   return jsons;
 }
 
@@ -41,18 +40,33 @@ async function upsertDb(jsons: any[], weightMeasureId: number) {
   }
 }
 
-async function readCSV(file: File) {
+async function readCSV(file: File, weightUnitsId: number) {
   var text = await file.text();
-  const jsons = (
-    await csv
-      .default({
-        output: 'json',
-        checkColumn: true,
-        nullObject: true,
-      })
-      .fromString(text)
-  ).map(v => v);
-  // TODO: need to do some validation on the csv then call the api post to update the db
-  console.log('objs' + jsons.length + JSON.stringify(jsons[0]));
-  return jsons;
+  const parse = require('csv-parse');
+  const parser = parse(text, { autoParse: true, autoParseDate: true, columns: csvHeaders });
+  const output: any[] = [];
+  // Use the readable stream api
+  parser.on('readable', function () {
+    let record;
+    while ((record = parser.read())) {
+      record['weight_units_id'] = weightUnitsId;
+      const json = jr.fromKeyValArray(
+        jr.toKeyValArray(record).map(kv => {
+          kv.value = kv.value || null;
+          return kv;
+        })
+      );
+      output.push(json);
+    }
+  });
+
+  // Catch any error
+  parser.on('error', function (err: any) {
+    console.error(err.message);
+  });
+
+  // When we are done, test that the parsed output matched what expected
+  parser.on('end', async function () {
+    await postDays(output.slice(1));
+  });
 }
