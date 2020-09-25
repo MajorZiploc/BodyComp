@@ -58,22 +58,20 @@ export async function postDays(days: any[]) {
   console.log(url);
   return await fetch(url, {
     method: 'post',
-    mode: 'cors',
     headers: {
-      'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify([
       {
-        date: '7/21/20',
-        calories: '2208',
-        morning_weight: null,
-        body_fat_percentage: null,
-        muscle_mass_percentage: null,
-        weight_units_id: 1,
+        date: '7/21/4444',
+        calories: '666667',
+        morning_weight: 234,
+        body_fat_percentage: 321,
+        muscle_mass_percentage: 2222,
+        weight_units_id: 2,
       },
     ]),
-  }).then(async r => {
-    return await r.json();
-  });
+  })
+    .then(e => console.log('hapi path ' + JSON.stringify(e)))
+    .catch((e: any) => console.log('sad path ' + e));
 }

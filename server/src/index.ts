@@ -15,29 +15,6 @@ const init = async () => {
         maxAge: 86400,
         headers: ['Accept', 'Authorization', 'Content-Type', 'If-None-Match', 'Access-Control-Request-Method'], // an array of strings - 'Access-Control-Allow-Headers'
         exposedHeaders: ['Accept', 'Authorization', 'Content-Type', 'If-None-Match', 'Access-Control-Request-Method'], // an array of exposed headers - 'Access-Control-Expose-Headers',
-        additionalExposedHeaders: [
-          'WWW-Authenticate',
-          'Server-Authorization',
-          'Accept',
-          'Access-Control-Allow-Origin',
-          'Access-Control-Request-Method',
-          'Allow-Origin',
-          'Origin',
-          'access-control-allow-origin',
-          'access-control-request-method',
-          'allow-origin',
-          'origin',
-        ], // an array of additional exposed headers
-        additionalHeaders: [
-          'Access-Control-Allow-Origin',
-          'Access-Control-Request-Method',
-          'Allow-Origin',
-          'Origin',
-          'access-control-allow-origin',
-          'access-control-request-method',
-          'allow-origin',
-          'origin',
-        ],
         credentials: true, // boolean - 'Access-Control-Allow-Credentials'
       },
       payload: {
@@ -60,6 +37,7 @@ const init = async () => {
     method: 'GET',
     path: '/weight',
     handler: async (request: Request, h: ResponseToolkit) => {
+      console.log('weight');
       var sqlQuery = sqlstring.format(
         `SELECT 
           WuId
@@ -137,30 +115,36 @@ const init = async () => {
     method: 'POST',
     path: '/bulkUpload',
     handler: async (request: Request, h: ResponseToolkit) => {
+      console.log('hi');
       const body = request.payload as any[];
+      console.log(body);
       const connection = ADODB.open(config.connectionString);
       const truncate = `TRUNCATE TABLE dbo.StagingBulkUpload`;
       await connection.execute(truncate);
 
-      body.forEach(async (j: any) => {
-        const insert = sqlstring.format(
-          `INSERT INTO dbo.StagingBulkUpload
+      await Promise.all(
+        body.map(async (j: any) => {
+          const insert = sqlstring.format(
+            `INSERT INTO dbo.StagingBulkUpload
             (DyDate,
             DyCalories,
             DyMorningWeight,
             DyBodyFatPercentage,
-            DyMuscleMassPercentage)
+            DyMuscleMassPercentage,
+            DyWeightUnitsId)
           VALUES
             (?,
             ?,
             ?,
             ?,
+            ?,
             ?)
           `,
-          [j.date, j.calories, j.morning_weight, j.body_fat_percentage, j.muscle_mass_percentage, j.weight_units_id]
-        );
-        await connection.execute(insert);
-      });
+            [j.date, j.calories, j.morning_weight, j.body_fat_percentage, j.muscle_mass_percentage, j.weight_units_id]
+          );
+          await connection.execute(insert);
+        })
+      );
 
       const upsert = `MERGE dbo.Day AS [Target]
           USING (SELECT 
@@ -169,7 +153,8 @@ const init = async () => {
           DyCalories,
           DyMorningWeight,
           DyBodyFatPercentage,
-          DyMuscleMassPercentage
+          DyMuscleMassPercentage,
+          DyWeightUnitsId
           FROM dbo.StagingBulkUpload AS sbu) AS [Source] 
           ON [Target].DyDate = [Source].DyDate
           WHEN MATCHED THEN
@@ -177,15 +162,17 @@ const init = async () => {
             [Target].DyCalories=Source.DyCalories,
             [Target].DyMorningWeight=Source.DyMorningWeight,
             [Target].DyBodyFatPercentage=Source.DyBodyFatPercentage,
-            [Target].DyMuscleMassPercentage=Source.DyMuscleMassPercentage
+            [Target].DyMuscleMassPercentage=Source.DyMuscleMassPercentage,
+            [Target].DyWeightUnitsId=Source.DyWeightUnitsId
           WHEN NOT MATCHED THEN
             INSERT 
             (DyDate,
             DyCalories,
             DyMorningWeight,
             DyBodyFatPercentage,
-            DyMuscleMassPercentage
-            ) VALUES (Source.DyDate,[Source].DyCalories, Source.DyMorningWeight, Source.DyBodyFatPercentage, Source.DyMuscleMassPercentage);
+            DyMuscleMassPercentage,
+            DyWeightUnitsId
+            ) VALUES (Source.DyDate,[Source].DyCalories, Source.DyMorningWeight, Source.DyBodyFatPercentage, Source.DyMuscleMassPercentage, Source.DyWeightUnitsId);
         `;
 
       await connection.execute(upsert);

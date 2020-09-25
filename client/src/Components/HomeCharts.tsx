@@ -1,7 +1,7 @@
 import { Day } from '../models';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { getMockDays, getDays } from '../data';
+import { getMockDays, getDays, postDays } from '../data';
 import SingleLineChart from './SingleLineChart';
 import DatePicker from 'react-datepicker';
 import { withRouter } from 'react-router-dom';
@@ -20,6 +20,7 @@ function HomeCharts() {
 
   useEffect(() => {
     const f = async () => {
+      await postDays([]);
       setDays(await getDays({ minDate: startDate?.toLocaleDateString(), maxDate: endDate?.toLocaleDateString() }));
     };
     f();
