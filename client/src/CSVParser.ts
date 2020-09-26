@@ -17,7 +17,7 @@ export async function readCSVs(files: File[]) {
   return jsons;
 }
 
-async function validateJsons(jsons: any[]) {
+function validateJsons(jsons: any[]) {
   const contract = [jr.fromKeyValArray(csvHeaders.map(h => ({ key: h, value: '' })))];
   return jc.typecheck(jsons, contract, {
     nullableKeys: ['calories', 'morning_weight', 'body_fat_percentage', 'muscle_mass_percentage'],
@@ -25,9 +25,13 @@ async function validateJsons(jsons: any[]) {
 }
 
 async function upsertDb(jsons: any[], weightMeasureId: number) {
+  const errMsg = () => 'Make sure they match the following: ' + csvHeaders.join(', ') + '. They can be in any order.';
   try {
     if (!validateJsons(jsons)) {
-      throw new Error('CSV headers where not found. Make sure they match the following:' + JSON.stringify(csvHeaders));
+      return {
+        fate: Fate.FAILURE,
+        result: 'CSV headers where not an exact match. ' + errMsg(),
+      };
     } else {
       const body = jsons.map(j => jr.addField(j, 'weight_units_id', weightMeasureId));
       console.log(JSON.stringify(body));
@@ -36,7 +40,7 @@ async function upsertDb(jsons: any[], weightMeasureId: number) {
       return { fate: Fate.SUCCESS, result: response };
     }
   } catch (err) {
-    return { fate: Fate.FAILURE, result: err };
+    return { fate: Fate.FAILURE, result: errMsg() + ' ' + err };
   }
 }
 
