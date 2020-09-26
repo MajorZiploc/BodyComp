@@ -4,7 +4,7 @@ import { Form, Button, FormGroup, FormFile, Toast, Dropdown } from 'react-bootst
 import { upsertApi } from '../CSVParser';
 import { withRouter } from 'react-router-dom';
 import { Weight } from '../models';
-import { getWeights, postDays } from '../data';
+import { getWeights, postDays, getMockWeights } from '../data';
 import { Fate } from '../Fate';
 
 interface ToastInfo {
@@ -58,8 +58,8 @@ function CSVForm() {
 
   useEffect(() => {
     const f = async () => {
-      const weights = await getWeights();
-      const firstWeight = weights.find(w => w)?.WuId ?? undefined;
+      const weights = await getMockWeights();
+      const firstWeight = weights?.find(w => w)?.WuId ?? undefined;
       setWeightMeasureId(firstWeight);
       setWeights(weights);
     };
