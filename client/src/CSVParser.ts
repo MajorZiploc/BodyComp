@@ -4,6 +4,7 @@ import { data } from './Data/DataFactory';
 import { Fate } from './Fate';
 
 const csvHeaders = ['date', 'calories', 'morning_weight', 'body_fat_percentage', 'muscle_mass_percentage'];
+const should_delete_header = 'should_delete';
 
 export async function upsertApi(files: File[], weightMeasureId: number) {
   const jsons = await readCSVs(files);
@@ -19,7 +20,8 @@ export async function readCSVs(files: File[]) {
 
 function validateJsons(jsons: any[]) {
   const contract = [jr.fromKeyValArray(csvHeaders.map(h => ({ key: h, value: '' })))];
-  return jc.typecheck(jsons, contract, {
+  const requiredFields = jsons.map(j => jr.subJsonExcept(j, [should_delete_header]));
+  return jc.typecheck(requiredFields, contract, {
     nullableKeys: ['calories', 'morning_weight', 'body_fat_percentage', 'muscle_mass_percentage'],
   });
 }
@@ -35,7 +37,12 @@ async function upsertDb(jsons: any[], weightMeasureId: number) {
     } else {
       const body = jsons.map(j => jr.addField(j, 'weight_units_id', weightMeasureId));
       console.log(JSON.stringify(body));
-      const response = await data.postDays(body);
+      const entriesToDelete = jsons.filter(j => j[should_delete_header] === 'true');
+      const upsertEntries = jsons
+        .filter(j => j[should_delete_header] !== 'true')
+        .map(j => jr.subJsonExcept(j, [should_delete_header]));
+      const response = await data.postDays(upsertEntries);
+      // TODO: add post to delete days
       console.log(JSON.stringify(response));
       return { fate: Fate.SUCCESS, result: response };
     }
@@ -51,7 +58,7 @@ async function readCSV(file: File) {
     autoParse: true,
     autoParseDate: true,
     columns: true,
-  }).slice(1); // TODO: may need to slice first record off
+  });
   const cleanedRecords = records.map(r => {
     const json = jr.fromKeyValArray(
       jr.toKeyValArray(r).map(kv => {

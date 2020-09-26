@@ -1,4 +1,4 @@
-muscle_mass_percentage,morning_weight,calories,body_fat_percentage,date,x
-,,2208,,7/21/20,
+muscle_mass_percentage,morning_weight,calories,body_fat_percentage,date,should_delete
+,,2208,,7/21/20,true
 ,145,2309,,7/28/20,
 45,149,2172,16.8,7/29/20,
