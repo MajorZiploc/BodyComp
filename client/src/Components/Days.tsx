@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { DaysParams, getDays } from '../data';
+import { data } from '../Data/DataFactory';
 
 const Days = () => {
   const [hasError, setErrors] = useState(false);
   const [days, setDays] = useState({});
 
   async function fetchData() {
-    getDays()
-      .then(res => {
+    data
+      .getDays()
+      .then((res: any) => {
         return setDays(res);
       })
       .catch(err => {

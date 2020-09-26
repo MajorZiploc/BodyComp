@@ -1,6 +1,6 @@
 import { jsonComparer as jc, jsonRefactor as jr } from 'json-test-utility';
 import * as _ from 'lodash';
-import { postDays, postMockDays } from './data';
+import { data } from './Data/DataFactory';
 import { Fate } from './Fate';
 
 const csvHeaders = ['date', 'calories', 'morning_weight', 'body_fat_percentage', 'muscle_mass_percentage'];
@@ -31,7 +31,7 @@ async function upsertDb(jsons: any[], weightMeasureId: number) {
     } else {
       const body = jsons.map(j => jr.addField(j, 'weight_units_id', weightMeasureId));
       console.log(JSON.stringify(body));
-      const response = await postMockDays(body);
+      const response = await data.postDays(body);
       console.log(JSON.stringify(response));
       return { fate: Fate.SUCCESS, result: response };
     }
