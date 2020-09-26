@@ -3,8 +3,17 @@ import * as _ from 'lodash';
 import { data } from './Data/DataFactory';
 import { Fate } from './Fate';
 
-const csvHeaders = ['date', 'calories', 'morning_weight', 'body_fat_percentage', 'muscle_mass_percentage'];
-const should_delete_header = 'should_delete';
+const CALORIES = 'calories';
+const DATE = 'date';
+const MORNING_WEIGHT = 'morning_weight';
+const BODY_FAT_PERCENTAGE = 'body_fat_percentage';
+const MUSCLE_MASS_PERCENTAGE = 'muscle_mass_percentage';
+const SHOULD_DELETE = 'should_delete';
+
+const csvHeaders = [DATE, CALORIES, MORNING_WEIGHT, BODY_FAT_PERCENTAGE, MUSCLE_MASS_PERCENTAGE];
+const csvOptionalHeaders = [SHOULD_DELETE];
+
+const TRUE = 'true';
 
 export async function upsertApi(files: File[], weightMeasureId: number) {
   const jsons = await readCSVs(files);
@@ -20,14 +29,19 @@ export async function readCSVs(files: File[]) {
 
 function validateJsons(jsons: any[]) {
   const contract = [jr.fromKeyValArray(csvHeaders.map(h => ({ key: h, value: '' })))];
-  const requiredFields = jsons.map(j => jr.subJsonExcept(j, [should_delete_header]));
+  const requiredFields = jsons.map(j => jr.subJsonExcept(j, [SHOULD_DELETE]));
   return jc.typecheck(requiredFields, contract, {
-    nullableKeys: ['calories', 'morning_weight', 'body_fat_percentage', 'muscle_mass_percentage'],
+    nullableKeys: [CALORIES, MORNING_WEIGHT, BODY_FAT_PERCENTAGE, MUSCLE_MASS_PERCENTAGE],
   });
 }
 
 async function upsertDb(jsons: any[], weightMeasureId: number) {
-  const errMsg = () => 'Make sure they match the following: ' + csvHeaders.join(', ') + '. They can be in any order.';
+  const errMsg = () =>
+    'Make sure the headers match the following: ' +
+    csvHeaders.join(', ') +
+    '. They can be in any order.' +
+    ' Along with the optional headers: ' +
+    csvOptionalHeaders.join(', ');
   try {
     if (!validateJsons(jsons)) {
       return {
@@ -37,10 +51,8 @@ async function upsertDb(jsons: any[], weightMeasureId: number) {
     } else {
       const body = jsons.map(j => jr.addField(j, 'weight_units_id', weightMeasureId));
       console.log(JSON.stringify(body));
-      const entriesToDelete = jsons.filter(j => j[should_delete_header] === 'true').map(j => jr.subJson(j, ['date']));
-      const upsertEntries = jsons
-        .filter(j => j[should_delete_header] !== 'true')
-        .map(j => jr.subJsonExcept(j, [should_delete_header]));
+      const entriesToDelete = jsons.filter(j => j[SHOULD_DELETE] === TRUE).map(j => jr.subJson(j, [DATE]));
+      const upsertEntries = jsons.filter(j => j[SHOULD_DELETE] !== TRUE).map(j => jr.subJsonExcept(j, [SHOULD_DELETE]));
       const response = await data.postDays(upsertEntries);
       const deleteResponse = await data.postDeleteDays(entriesToDelete);
       // TODO: how to handle showing the data from both?
