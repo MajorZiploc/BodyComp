@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { Weight } from '../models';
 import { data } from '../Data/DataFactory';
 import { Fate } from '../Fate';
+const sampleCsv = '/Files/SampleBodyCompEntries.csv';
 
 interface ToastInfo {
   variant: string;
@@ -83,6 +84,9 @@ function CSVForm() {
 
   return (
     <>
+      <a href={sampleCsv} download target={'_blank'}>
+        Example CSV
+      </a>
       {weights && (
         <>
           <Form>

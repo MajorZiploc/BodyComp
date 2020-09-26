@@ -13,7 +13,7 @@ const SHOULD_DELETE = 'should_delete';
 const csvHeaders = [DATE, CALORIES, MORNING_WEIGHT, BODY_FAT_PERCENTAGE, MUSCLE_MASS_PERCENTAGE];
 const csvOptionalHeaders = [SHOULD_DELETE];
 
-const TRUE = 'true';
+const TRUE = 'TRUE';
 
 export async function upsertApi(files: File[], weightMeasureId: number) {
   const jsons = await readCSVs(files);
