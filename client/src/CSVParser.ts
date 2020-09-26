@@ -37,7 +37,7 @@ async function upsertDb(jsons: any[], weightMeasureId: number) {
     } else {
       const body = jsons.map(j => jr.addField(j, 'weight_units_id', weightMeasureId));
       console.log(JSON.stringify(body));
-      const entriesToDelete = jsons.filter(j => j[should_delete_header] === 'true');
+      const entriesToDelete = jsons.filter(j => j[should_delete_header] === 'true').map(j => jr.subJson(j, ['date']));
       const upsertEntries = jsons
         .filter(j => j[should_delete_header] !== 'true')
         .map(j => jr.subJsonExcept(j, [should_delete_header]));

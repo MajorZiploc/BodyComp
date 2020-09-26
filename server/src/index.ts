@@ -93,9 +93,7 @@ const init = async () => {
       weight_units_id: Joi.number().integer().positive().allow(null).required(),
     })
     .unknown(false);
-
   const arraySchema = Joi.array().items(objectSchema);
-
   const altSchema = Joi.alternatives().try(objectSchema, arraySchema);
 
   server.route({
@@ -170,6 +168,42 @@ const init = async () => {
     options: {
       validate: {
         payload: altSchema as any,
+      },
+    },
+  });
+
+  const objectDeleteSchema = Joi.object()
+    .keys({
+      date: Joi.date().required(),
+    })
+    .unknown(false);
+  const arrayDeleteSchema = Joi.array().items(objectDeleteSchema);
+  const altDeleteSchema = Joi.alternatives().try(objectDeleteSchema, arrayDeleteSchema);
+
+  server.route({
+    method: 'POST',
+    path: '/bulkDelete',
+    handler: async (request: Request, h: ResponseToolkit) => {
+      const body = request.payload as any[];
+      const connection = ADODB.open(config.connectionString);
+
+      await Promise.all(
+        body.map(async (j: any) => {
+          const deleteStmt = sqlstring.format(
+            `DELETE FROM dbo.Day
+            WHERE DyDate = ?
+            `,
+            [j.date]
+          );
+          await connection.execute(deleteStmt);
+        })
+      );
+
+      return { message: 'Delete was successful' };
+    },
+    options: {
+      validate: {
+        payload: altDeleteSchema as any,
       },
     },
   });

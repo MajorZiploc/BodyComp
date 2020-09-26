@@ -6,8 +6,17 @@ import { formatQueryParams } from './dataUtil';
 import IData from './IData';
 
 export default class Data implements IData {
-  postDeleteDays(days: any[]): Promise<any> {
-    throw new Error('Method not implemented.');
+  async postDeleteDays(days: any[]): Promise<any> {
+    const url = urljoin(config.apiUrl, 'bulkDelete');
+    return await fetch(url, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(days),
+    })
+      .then(e => console.log('hapi path ' + JSON.stringify(e)))
+      .catch((e: any) => console.log('sad path ' + e));
   }
 
   getDays(queryParams?: DaysParams): Promise<Day[]> {
