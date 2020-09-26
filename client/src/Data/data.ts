@@ -6,6 +6,10 @@ import { formatQueryParams } from './dataUtil';
 import IData from './IData';
 
 export default class Data implements IData {
+  postDeleteDays(days: any[]): Promise<any> {
+    throw new Error('Method not implemented.');
+  }
+
   getDays(queryParams?: DaysParams): Promise<Day[]> {
     const url = urljoin(config.apiUrl, 'day', formatQueryParams(queryParams));
     return fetch(url, {

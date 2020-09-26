@@ -5,6 +5,10 @@ import { Day, Weight } from '../models';
 import IData from './IData';
 
 export default class MockData implements IData {
+  async postDeleteDays(days: any[]): Promise<any> {
+    return { message: 'Successful mock upload' };
+  }
+
   async getDays(queryParams?: DaysParams): Promise<Day[]> {
     return MockDays.filter(
       d =>

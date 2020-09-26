@@ -7,4 +7,6 @@ export default interface IDate {
   getWeights(): Promise<Weight[]>;
 
   postDays(days: any[]): Promise<any>;
+
+  postDeleteDays(days: any[]): Promise<any>;
 }
