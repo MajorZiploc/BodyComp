@@ -46,7 +46,7 @@ async function readCSV(file: File) {
   const records: any[] = parse(text, {
     autoParse: true,
     autoParseDate: true,
-    columns: csvHeaders,
+    columns: true,
   }).slice(1); // TODO: may need to slice first record off
   const cleanedRecords = records.map(r => {
     const json = jr.fromKeyValArray(
