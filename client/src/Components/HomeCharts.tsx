@@ -1,10 +1,16 @@
 import { Day } from '../models';
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { useState, useEffect } from 'react';
 import { data } from '../Data/DataFactory';
 import SingleLineChart from './SingleLineChart';
 import DatePicker from 'react-datepicker';
 import { withRouter } from 'react-router-dom';
+import { Carousel } from 'react-bootstrap';
+import '../Styles/Carousel.css';
+
+const ml_10 = {
+  'margin-left': '10.3%',
+} as CSSProperties;
 
 function HomeCharts() {
   const [days, setDays] = useState<Day[]>();
@@ -37,37 +43,45 @@ function HomeCharts() {
     <>
       <DatePicker selected={startDate} onChange={(d: Date) => setStartDate(d)} />
       <DatePicker selected={endDate} onChange={(d: Date) => setEndDate(d)} />
-      <SingleLineChart
-        day={day}
-        show={show}
-        label={`Weight Over Time in ${
-          firstDayWithWeightInfo === undefined
-            ? '<No Weight Units found!>'
-            : `${firstDayWithWeightInfo?.WuName} (${firstDayWithWeightInfo?.WuLabel})`
-        }`}
-        labels={labels}
-        backgroundColor='rgb(255, 99, 132)'
-        borderColor='rgb(255, 99, 132)'
-        handleClose={handleClose}
-        event={event}
-        data={days?.map((d: Day) => d.DyMorningWeight)}
-      />
 
-      <SingleLineChart
-        day={day}
-        show={show}
-        label={`Calories Over Time in ${
-          firstDayWithWeightInfo === undefined
-            ? '<No Weight Units found!>'
-            : `${firstDayWithWeightInfo?.WuName} (${firstDayWithWeightInfo?.WuLabel})`
-        }`}
-        labels={labels}
-        backgroundColor='rgb(132, 99, 255)'
-        borderColor='rgb(132, 99, 255)'
-        handleClose={handleClose}
-        event={event}
-        data={days?.map((d: Day) => d.DyCalories)}
-      />
+      <Carousel>
+        {[
+          <SingleLineChart
+            day={day}
+            show={show}
+            label={`Weight Over Time in ${
+              firstDayWithWeightInfo === undefined
+                ? '<No Weight Units found!>'
+                : `${firstDayWithWeightInfo?.WuName} (${firstDayWithWeightInfo?.WuLabel})`
+            }`}
+            labels={labels}
+            backgroundColor='rgb(255, 99, 132)'
+            borderColor='rgb(255, 99, 132)'
+            handleClose={handleClose}
+            event={event}
+            data={days?.map((d: Day) => d.DyMorningWeight)}
+          />,
+          <SingleLineChart
+            day={day}
+            show={show}
+            label={`Calories Over Time in ${
+              firstDayWithWeightInfo === undefined
+                ? '<No Weight Units found!>'
+                : `${firstDayWithWeightInfo?.WuName} (${firstDayWithWeightInfo?.WuLabel})`
+            }`}
+            labels={labels}
+            backgroundColor='rgb(132, 99, 255)'
+            borderColor='rgb(132, 99, 255)'
+            handleClose={handleClose}
+            event={event}
+            data={days?.map((d: Day) => d.DyCalories)}
+          />,
+        ].map((chart, index) => (
+          <Carousel.Item className={'w-75 h-75 justify-content-center'} style={ml_10} key={index}>
+            {chart}
+          </Carousel.Item>
+        ))}
+      </Carousel>
     </>
   );
 }
