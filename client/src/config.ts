@@ -4,5 +4,5 @@ export const config = {
     clientId: 'BodyCompClient',
     clientRoot: 'http://localhost:3000/',
   },
-  shouldMockData: true
+  shouldMockData: false,
 };

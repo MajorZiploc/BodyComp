@@ -29,7 +29,7 @@ export async function readCSVs(files: File[]) {
 
 function validateJsons(jsons: any[]) {
   const contract = [jr.fromKeyValArray(csvHeaders.map(h => ({ key: h, value: '' })))];
-  const requiredFields = jsons.map(j => jr.subJsonExcept(j, [SHOULD_DELETE]));
+  const requiredFields = jsons.map(j => jr.subJson(j, csvHeaders));
   return jc.typecheck(requiredFields, contract, {
     nullableKeys: [CALORIES, MORNING_WEIGHT, BODY_FAT_PERCENTAGE, MUSCLE_MASS_PERCENTAGE],
   });
@@ -51,8 +51,8 @@ async function upsertDb(jsons: any[], weightMeasureId: number) {
     } else {
       const body = jsons.map(j => jr.addField(j, 'weight_units_id', weightMeasureId));
       console.log(JSON.stringify(body));
-      const entriesToDelete = jsons.filter(j => j[SHOULD_DELETE] === TRUE).map(j => jr.subJson(j, [DATE]));
-      const upsertEntries = jsons.filter(j => j[SHOULD_DELETE] !== TRUE).map(j => jr.subJsonExcept(j, [SHOULD_DELETE]));
+      const entriesToDelete = body.filter(j => j[SHOULD_DELETE] === TRUE).map(j => jr.subJson(j, [DATE]));
+      const upsertEntries = body.filter(j => j[SHOULD_DELETE] !== TRUE).map(j => jr.subJsonExcept(j, [SHOULD_DELETE]));
       const response = await data.postDays(upsertEntries);
       const deleteResponse = await data.postDeleteDays(entriesToDelete);
       // TODO: how to handle showing the data from both?
