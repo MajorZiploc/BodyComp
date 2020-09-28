@@ -7,17 +7,11 @@ import DatePicker from 'react-datepicker';
 import { withRouter } from 'react-router-dom';
 import { Carousel } from 'react-bootstrap';
 import '../Styles/Carousel.css';
+import Summary from './Summary';
 
 const ml_10 = {
   marginLeft: '10.5%',
 } as CSSProperties;
-
-interface Summary {
-  weightGainOrLoss: number;
-  weightUnits: string;
-  // avgWeight: number;
-  // avgCalories: number;
-}
 
 function HomeCharts() {
   const [days, setDays] = useState<Day[]>();
@@ -27,7 +21,6 @@ function HomeCharts() {
   const [show, setShow] = useState(false);
   const [startDate, setStartDate] = useState<Date>();
   const [endDate, setEndDate] = useState<Date>();
-  const [summary, setSummary] = useState<Summary>();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -39,18 +32,6 @@ function HomeCharts() {
         maxDate: endDate?.toLocaleDateString(),
       });
       setDays(ds);
-      if (ds) {
-        const weightUnits = ds.find(d => d.WuLabel)?.WuLabel ?? 'No weight units!';
-        const daysWithMorningWeight = ds.filter(d => d.DyMorningWeight !== null && d.DyMorningWeight !== undefined);
-        const lastDayWeight = daysWithMorningWeight[daysWithMorningWeight?.length - 1]?.DyMorningWeight;
-        const firstDayWeight = daysWithMorningWeight[0]?.DyMorningWeight;
-        if (lastDayWeight && firstDayWeight) {
-          setSummary({
-            weightGainOrLoss: lastDayWeight - firstDayWeight,
-            weightUnits: weightUnits,
-          });
-        }
-      }
     };
     f();
   }, [startDate, endDate]);
@@ -106,12 +87,7 @@ function HomeCharts() {
           </Carousel.Item>
         ))}
       </Carousel>
-      {summary && (
-        <p>
-          {summary.weightGainOrLoss > 0 ? 'Weight Gain: ' : 'Weight Loss: '}
-          {Math.abs(summary.weightGainOrLoss).toFixed(2) + ' ' + summary.weightUnits}
-        </p>
-      )}
+      <Summary days={days} />
     </>
   );
 }
