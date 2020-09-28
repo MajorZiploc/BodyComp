@@ -1,470 +1,551 @@
 [
-    {
-        "DyDate": "2020-07-21T05:00:00Z",
-        "DyCalories": 2208,
-        "DyMorningWeight": null,
-        "DyBodyFatPercentage": null,
-        "DyMuscleMassPercentage": null,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-07-22T05:00:00Z",
-        "DyCalories": 2231,
-        "DyMorningWeight": null,
-        "DyBodyFatPercentage": null,
-        "DyMuscleMassPercentage": null,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-07-23T05:00:00Z",
-        "DyCalories": 2117,
-        "DyMorningWeight": 143,
-        "DyBodyFatPercentage": null,
-        "DyMuscleMassPercentage": null,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-07-24T05:00:00Z",
-        "DyCalories": 1995,
-        "DyMorningWeight": 144,
-        "DyBodyFatPercentage": null,
-        "DyMuscleMassPercentage": null,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-07-25T05:00:00Z",
-        "DyCalories": 2188,
-        "DyMorningWeight": 143,
-        "DyBodyFatPercentage": null,
-        "DyMuscleMassPercentage": null,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-07-26T05:00:00Z",
-        "DyCalories": 2204,
-        "DyMorningWeight": 143,
-        "DyBodyFatPercentage": null,
-        "DyMuscleMassPercentage": null,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-07-27T05:00:00Z",
-        "DyCalories": 2026,
-        "DyMorningWeight": 141,
-        "DyBodyFatPercentage": null,
-        "DyMuscleMassPercentage": null,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-07-28T05:00:00Z",
-        "DyCalories": 2309,
-        "DyMorningWeight": 145,
-        "DyBodyFatPercentage": null,
-        "DyMuscleMassPercentage": null,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-07-29T05:00:00Z",
-        "DyCalories": 2172,
-        "DyMorningWeight": 149,
-        "DyBodyFatPercentage": 16.8,
-        "DyMuscleMassPercentage": 45,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-07-30T05:00:00Z",
-        "DyCalories": 2103,
-        "DyMorningWeight": 149,
-        "DyBodyFatPercentage": 17,
-        "DyMuscleMassPercentage": 44.9,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-07-31T05:00:00Z",
-        "DyCalories": 2247,
-        "DyMorningWeight": 146.6,
-        "DyBodyFatPercentage": 16.5,
-        "DyMuscleMassPercentage": 45.2,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-01T05:00:00Z",
-        "DyCalories": 2242,
-        "DyMorningWeight": 146.6,
-        "DyBodyFatPercentage": 16.5,
-        "DyMuscleMassPercentage": 45.2,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-02T05:00:00Z",
-        "DyCalories": 2280,
-        "DyMorningWeight": 147.5,
-        "DyBodyFatPercentage": 16.5,
-        "DyMuscleMassPercentage": 45.2,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-03T05:00:00Z",
-        "DyCalories": 2249,
-        "DyMorningWeight": 148.1,
-        "DyBodyFatPercentage": 16.7,
-        "DyMuscleMassPercentage": 45.1,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-04T05:00:00Z",
-        "DyCalories": 2085,
-        "DyMorningWeight": 146.8,
-        "DyBodyFatPercentage": 16.4,
-        "DyMuscleMassPercentage": 45.2,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-05T05:00:00Z",
-        "DyCalories": 2359,
-        "DyMorningWeight": 147.3,
-        "DyBodyFatPercentage": 16.6,
-        "DyMuscleMassPercentage": 45.1,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-06T05:00:00Z",
-        "DyCalories": 2337,
-        "DyMorningWeight": null,
-        "DyBodyFatPercentage": null,
-        "DyMuscleMassPercentage": null,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-07T05:00:00Z",
-        "DyCalories": 2228,
-        "DyMorningWeight": 147.5,
-        "DyBodyFatPercentage": 16.6,
-        "DyMuscleMassPercentage": 45.1,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-08T05:00:00Z",
-        "DyCalories": 2175,
-        "DyMorningWeight": 146.6,
-        "DyBodyFatPercentage": 16.4,
-        "DyMuscleMassPercentage": 45.2,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-09T05:00:00Z",
-        "DyCalories": 2194,
-        "DyMorningWeight": 146.4,
-        "DyBodyFatPercentage": 16.5,
-        "DyMuscleMassPercentage": 45.2,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-10T05:00:00Z",
-        "DyCalories": 2051,
-        "DyMorningWeight": 146.2,
-        "DyBodyFatPercentage": 16.3,
-        "DyMuscleMassPercentage": 45.3,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-11T05:00:00Z",
-        "DyCalories": 1992,
-        "DyMorningWeight": 146.8,
-        "DyBodyFatPercentage": 16.4,
-        "DyMuscleMassPercentage": 45.3,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-12T05:00:00Z",
-        "DyCalories": 2046,
-        "DyMorningWeight": 145.7,
-        "DyBodyFatPercentage": 16.3,
-        "DyMuscleMassPercentage": 45.3,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-13T05:00:00Z",
-        "DyCalories": 2172,
-        "DyMorningWeight": 146.2,
-        "DyBodyFatPercentage": 16.3,
-        "DyMuscleMassPercentage": 45.3,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-14T05:00:00Z",
-        "DyCalories": 2274,
-        "DyMorningWeight": 145.5,
-        "DyBodyFatPercentage": 16.1,
-        "DyMuscleMassPercentage": 45.4,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-15T05:00:00Z",
-        "DyCalories": 2176,
-        "DyMorningWeight": 145.9,
-        "DyBodyFatPercentage": 16.3,
-        "DyMuscleMassPercentage": 45.3,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-16T05:00:00Z",
-        "DyCalories": 2058,
-        "DyMorningWeight": 145.9,
-        "DyBodyFatPercentage": 16.2,
-        "DyMuscleMassPercentage": 45.3,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-17T05:00:00Z",
-        "DyCalories": 2081,
-        "DyMorningWeight": 145.7,
-        "DyBodyFatPercentage": 16.1,
-        "DyMuscleMassPercentage": 45.4,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-18T05:00:00Z",
-        "DyCalories": 1875,
-        "DyMorningWeight": 145.7,
-        "DyBodyFatPercentage": 16.1,
-        "DyMuscleMassPercentage": 45.4,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-19T05:00:00Z",
-        "DyCalories": 2028,
-        "DyMorningWeight": 145.7,
-        "DyBodyFatPercentage": 16.2,
-        "DyMuscleMassPercentage": 45.3,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-20T05:00:00Z",
-        "DyCalories": 2017,
-        "DyMorningWeight": 145.5,
-        "DyBodyFatPercentage": 16.1,
-        "DyMuscleMassPercentage": 45.4,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-21T05:00:00Z",
-        "DyCalories": 2042,
-        "DyMorningWeight": 145.9,
-        "DyBodyFatPercentage": 16.2,
-        "DyMuscleMassPercentage": 45.3,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-22T05:00:00Z",
-        "DyCalories": 2081,
-        "DyMorningWeight": 146.6,
-        "DyBodyFatPercentage": 16.3,
-        "DyMuscleMassPercentage": 45.3,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-23T05:00:00Z",
-        "DyCalories": 2028,
-        "DyMorningWeight": 145.5,
-        "DyBodyFatPercentage": 16.4,
-        "DyMuscleMassPercentage": 45.2,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-24T05:00:00Z",
-        "DyCalories": 2013,
-        "DyMorningWeight": 145.7,
-        "DyBodyFatPercentage": 16.3,
-        "DyMuscleMassPercentage": 45.3,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-25T05:00:00Z",
-        "DyCalories": 1870,
-        "DyMorningWeight": 146.2,
-        "DyBodyFatPercentage": 16.3,
-        "DyMuscleMassPercentage": 45.3,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-26T05:00:00Z",
-        "DyCalories": 2093,
-        "DyMorningWeight": 145.5,
-        "DyBodyFatPercentage": 16.2,
-        "DyMuscleMassPercentage": 45.4,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-27T05:00:00Z",
-        "DyCalories": 1935,
-        "DyMorningWeight": 145.7,
-        "DyBodyFatPercentage": 16.2,
-        "DyMuscleMassPercentage": 45.3,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-28T05:00:00Z",
-        "DyCalories": 2000,
-        "DyMorningWeight": 144.4,
-        "DyBodyFatPercentage": 15.9,
-        "DyMuscleMassPercentage": 45.5,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-29T05:00:00Z",
-        "DyCalories": 2091,
-        "DyMorningWeight": 145.1,
-        "DyBodyFatPercentage": 15.9,
-        "DyMuscleMassPercentage": 45.5,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-30T05:00:00Z",
-        "DyCalories": 2023,
-        "DyMorningWeight": 145.5,
-        "DyBodyFatPercentage": 16.1,
-        "DyMuscleMassPercentage": 45.4,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-08-31T05:00:00Z",
-        "DyCalories": 2030,
-        "DyMorningWeight": 144.6,
-        "DyBodyFatPercentage": 16,
-        "DyMuscleMassPercentage": 45.5,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-09-01T05:00:00Z",
-        "DyCalories": 1862,
-        "DyMorningWeight": 144.8,
-        "DyBodyFatPercentage": 16,
-        "DyMuscleMassPercentage": 45.4,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-09-02T05:00:00Z",
-        "DyCalories": 1762,
-        "DyMorningWeight": 144.6,
-        "DyBodyFatPercentage": 16,
-        "DyMuscleMassPercentage": 45.5,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-09-03T05:00:00Z",
-        "DyCalories": 1914,
-        "DyMorningWeight": 144.2,
-        "DyBodyFatPercentage": 15.8,
-        "DyMuscleMassPercentage": 45.6,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-09-04T05:00:00Z",
-        "DyCalories": 1974,
-        "DyMorningWeight": 144.4,
-        "DyBodyFatPercentage": 15.9,
-        "DyMuscleMassPercentage": 45.5,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-09-05T05:00:00Z",
-        "DyCalories": 2070,
-        "DyMorningWeight": 143.7,
-        "DyBodyFatPercentage": 15.6,
-        "DyMuscleMassPercentage": 45.7,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-09-06T05:00:00Z",
-        "DyCalories": 2032,
-        "DyMorningWeight": 143.5,
-        "DyBodyFatPercentage": 15.7,
-        "DyMuscleMassPercentage": 45.6,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-09-07T05:00:00Z",
-        "DyCalories": 2133,
-        "DyMorningWeight": 146.2,
-        "DyBodyFatPercentage": 16.3,
-        "DyMuscleMassPercentage": 45.3,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-09-08T05:00:00Z",
-        "DyCalories": 2055,
-        "DyMorningWeight": 143.7,
-        "DyBodyFatPercentage": 15.7,
-        "DyMuscleMassPercentage": 45.6,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-09-09T05:00:00Z",
-        "DyCalories": 1962,
-        "DyMorningWeight": 144,
-        "DyBodyFatPercentage": 15.7,
-        "DyMuscleMassPercentage": 45.6,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    },
-    {
-        "DyDate": "2020-09-10T05:00:00Z",
-        "DyCalories": 2038,
-        "DyMorningWeight": 143.7,
-        "DyBodyFatPercentage": 15.7,
-        "DyMuscleMassPercentage": 45.5,
-        "WuName": "pounds",
-        "WuLabel": "lbs"
-    }
+  {
+    "DyDate": "2020-07-29T05:00:00Z",
+    "DyCalories": 2172,
+    "DyMorningWeight": 149,
+    "DyBodyFatPercentage": 16.8,
+    "DyMuscleMassPercentage": 45,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-07-30T05:00:00Z",
+    "DyCalories": 2103,
+    "DyMorningWeight": 149,
+    "DyBodyFatPercentage": 17,
+    "DyMuscleMassPercentage": 44.9,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-07-31T05:00:00Z",
+    "DyCalories": 2247,
+    "DyMorningWeight": 146.6,
+    "DyBodyFatPercentage": 16.5,
+    "DyMuscleMassPercentage": 45.2,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-01T05:00:00Z",
+    "DyCalories": 2242,
+    "DyMorningWeight": 146.6,
+    "DyBodyFatPercentage": 16.5,
+    "DyMuscleMassPercentage": 45.2,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-02T05:00:00Z",
+    "DyCalories": 2280,
+    "DyMorningWeight": 147.5,
+    "DyBodyFatPercentage": 16.5,
+    "DyMuscleMassPercentage": 45.2,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-03T05:00:00Z",
+    "DyCalories": 2249,
+    "DyMorningWeight": 148.1,
+    "DyBodyFatPercentage": 16.7,
+    "DyMuscleMassPercentage": 45.1,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-04T05:00:00Z",
+    "DyCalories": 2085,
+    "DyMorningWeight": 146.8,
+    "DyBodyFatPercentage": 16.4,
+    "DyMuscleMassPercentage": 45.2,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-05T05:00:00Z",
+    "DyCalories": 2359,
+    "DyMorningWeight": 147.3,
+    "DyBodyFatPercentage": 16.6,
+    "DyMuscleMassPercentage": 45.1,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-06T05:00:00Z",
+    "DyCalories": 2337,
+    "DyMorningWeight": null,
+    "DyBodyFatPercentage": null,
+    "DyMuscleMassPercentage": null,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-07T05:00:00Z",
+    "DyCalories": 2228,
+    "DyMorningWeight": 147.5,
+    "DyBodyFatPercentage": 16.6,
+    "DyMuscleMassPercentage": 45.1,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-08T05:00:00Z",
+    "DyCalories": 2175,
+    "DyMorningWeight": 146.6,
+    "DyBodyFatPercentage": 16.4,
+    "DyMuscleMassPercentage": 45.2,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-09T05:00:00Z",
+    "DyCalories": 2194,
+    "DyMorningWeight": 146.4,
+    "DyBodyFatPercentage": 16.5,
+    "DyMuscleMassPercentage": 45.2,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-10T05:00:00Z",
+    "DyCalories": 2051,
+    "DyMorningWeight": 146.2,
+    "DyBodyFatPercentage": 16.3,
+    "DyMuscleMassPercentage": 45.3,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-11T05:00:00Z",
+    "DyCalories": 1992,
+    "DyMorningWeight": 146.8,
+    "DyBodyFatPercentage": 16.4,
+    "DyMuscleMassPercentage": 45.3,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-12T05:00:00Z",
+    "DyCalories": 2046,
+    "DyMorningWeight": 145.7,
+    "DyBodyFatPercentage": 16.3,
+    "DyMuscleMassPercentage": 45.3,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-13T05:00:00Z",
+    "DyCalories": 2172,
+    "DyMorningWeight": 146.2,
+    "DyBodyFatPercentage": 16.3,
+    "DyMuscleMassPercentage": 45.3,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-14T05:00:00Z",
+    "DyCalories": 2274,
+    "DyMorningWeight": 145.5,
+    "DyBodyFatPercentage": 16.1,
+    "DyMuscleMassPercentage": 45.4,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-15T05:00:00Z",
+    "DyCalories": 2176,
+    "DyMorningWeight": 145.9,
+    "DyBodyFatPercentage": 16.3,
+    "DyMuscleMassPercentage": 45.3,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-16T05:00:00Z",
+    "DyCalories": 2058,
+    "DyMorningWeight": 145.9,
+    "DyBodyFatPercentage": 16.2,
+    "DyMuscleMassPercentage": 45.3,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-17T05:00:00Z",
+    "DyCalories": 2081,
+    "DyMorningWeight": 145.7,
+    "DyBodyFatPercentage": 16.1,
+    "DyMuscleMassPercentage": 45.4,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-18T05:00:00Z",
+    "DyCalories": 1875,
+    "DyMorningWeight": 145.7,
+    "DyBodyFatPercentage": 16.1,
+    "DyMuscleMassPercentage": 45.4,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-19T05:00:00Z",
+    "DyCalories": 2028,
+    "DyMorningWeight": 145.7,
+    "DyBodyFatPercentage": 16.2,
+    "DyMuscleMassPercentage": 45.3,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-20T05:00:00Z",
+    "DyCalories": 2017,
+    "DyMorningWeight": 145.5,
+    "DyBodyFatPercentage": 16.1,
+    "DyMuscleMassPercentage": 45.4,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-21T05:00:00Z",
+    "DyCalories": 2042,
+    "DyMorningWeight": 145.9,
+    "DyBodyFatPercentage": 16.2,
+    "DyMuscleMassPercentage": 45.3,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-22T05:00:00Z",
+    "DyCalories": 2081,
+    "DyMorningWeight": 146.6,
+    "DyBodyFatPercentage": 16.3,
+    "DyMuscleMassPercentage": 45.3,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-23T05:00:00Z",
+    "DyCalories": 2028,
+    "DyMorningWeight": 145.5,
+    "DyBodyFatPercentage": 16.4,
+    "DyMuscleMassPercentage": 45.2,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-24T05:00:00Z",
+    "DyCalories": 2013,
+    "DyMorningWeight": 145.7,
+    "DyBodyFatPercentage": 16.3,
+    "DyMuscleMassPercentage": 45.3,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-25T05:00:00Z",
+    "DyCalories": 1870,
+    "DyMorningWeight": 146.2,
+    "DyBodyFatPercentage": 16.3,
+    "DyMuscleMassPercentage": 45.3,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-26T05:00:00Z",
+    "DyCalories": 2093,
+    "DyMorningWeight": 145.5,
+    "DyBodyFatPercentage": 16.2,
+    "DyMuscleMassPercentage": 45.4,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-27T05:00:00Z",
+    "DyCalories": 1935,
+    "DyMorningWeight": 145.7,
+    "DyBodyFatPercentage": 16.2,
+    "DyMuscleMassPercentage": 45.3,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-28T05:00:00Z",
+    "DyCalories": 2000,
+    "DyMorningWeight": 144.4,
+    "DyBodyFatPercentage": 15.9,
+    "DyMuscleMassPercentage": 45.5,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-29T05:00:00Z",
+    "DyCalories": 2091,
+    "DyMorningWeight": 145.1,
+    "DyBodyFatPercentage": 15.9,
+    "DyMuscleMassPercentage": 45.5,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-30T05:00:00Z",
+    "DyCalories": 2023,
+    "DyMorningWeight": 145.5,
+    "DyBodyFatPercentage": 16.1,
+    "DyMuscleMassPercentage": 45.4,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-08-31T05:00:00Z",
+    "DyCalories": 2030,
+    "DyMorningWeight": 144.6,
+    "DyBodyFatPercentage": 16,
+    "DyMuscleMassPercentage": 45.5,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-01T05:00:00Z",
+    "DyCalories": 1862,
+    "DyMorningWeight": 144.8,
+    "DyBodyFatPercentage": 16,
+    "DyMuscleMassPercentage": 45.4,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-02T05:00:00Z",
+    "DyCalories": 1762,
+    "DyMorningWeight": 144.6,
+    "DyBodyFatPercentage": 16,
+    "DyMuscleMassPercentage": 45.5,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-03T05:00:00Z",
+    "DyCalories": 1914,
+    "DyMorningWeight": 144.2,
+    "DyBodyFatPercentage": 15.8,
+    "DyMuscleMassPercentage": 45.6,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-04T05:00:00Z",
+    "DyCalories": 1974,
+    "DyMorningWeight": 144.4,
+    "DyBodyFatPercentage": 15.9,
+    "DyMuscleMassPercentage": 45.5,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-05T05:00:00Z",
+    "DyCalories": 2070,
+    "DyMorningWeight": 143.7,
+    "DyBodyFatPercentage": 15.6,
+    "DyMuscleMassPercentage": 45.7,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-06T05:00:00Z",
+    "DyCalories": 2032,
+    "DyMorningWeight": 143.5,
+    "DyBodyFatPercentage": 15.7,
+    "DyMuscleMassPercentage": 45.6,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-07T05:00:00Z",
+    "DyCalories": 2133,
+    "DyMorningWeight": 146.2,
+    "DyBodyFatPercentage": 16.3,
+    "DyMuscleMassPercentage": 45.3,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-08T05:00:00Z",
+    "DyCalories": 2055,
+    "DyMorningWeight": 143.7,
+    "DyBodyFatPercentage": 15.7,
+    "DyMuscleMassPercentage": 45.6,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-09T05:00:00Z",
+    "DyCalories": 1962,
+    "DyMorningWeight": 144,
+    "DyBodyFatPercentage": 15.7,
+    "DyMuscleMassPercentage": 45.6,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-10T05:00:00Z",
+    "DyCalories": 2038,
+    "DyMorningWeight": 143.7,
+    "DyBodyFatPercentage": 15.7,
+    "DyMuscleMassPercentage": 45.5,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-11T05:00:00Z",
+    "DyCalories": 1944,
+    "DyMorningWeight": 143.1,
+    "DyBodyFatPercentage": 15.5,
+    "DyMuscleMassPercentage": 45.7,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-12T05:00:00Z",
+    "DyCalories": 2095,
+    "DyMorningWeight": 143.3,
+    "DyBodyFatPercentage": 15.5,
+    "DyMuscleMassPercentage": 45.7,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-13T05:00:00Z",
+    "DyCalories": 2287,
+    "DyMorningWeight": 142.9,
+    "DyBodyFatPercentage": 15.5,
+    "DyMuscleMassPercentage": 45.7,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-14T05:00:00Z",
+    "DyCalories": 2077,
+    "DyMorningWeight": 142.2,
+    "DyBodyFatPercentage": 15.4,
+    "DyMuscleMassPercentage": 45.8,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-15T05:00:00Z",
+    "DyCalories": 2110,
+    "DyMorningWeight": 143.3,
+    "DyBodyFatPercentage": 15.6,
+    "DyMuscleMassPercentage": 45.7,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-16T05:00:00Z",
+    "DyCalories": 2101,
+    "DyMorningWeight": 142.4,
+    "DyBodyFatPercentage": 15.4,
+    "DyMuscleMassPercentage": 45.8,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-17T05:00:00Z",
+    "DyCalories": 2020,
+    "DyMorningWeight": 143.4,
+    "DyBodyFatPercentage": 15.6,
+    "DyMuscleMassPercentage": 45.7,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-18T05:00:00Z",
+    "DyCalories": 2037,
+    "DyMorningWeight": 143.1,
+    "DyBodyFatPercentage": 15.5,
+    "DyMuscleMassPercentage": 45.8,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-19T05:00:00Z",
+    "DyCalories": 2081,
+    "DyMorningWeight": 142,
+    "DyBodyFatPercentage": 15.3,
+    "DyMuscleMassPercentage": 45.8,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-20T05:00:00Z",
+    "DyCalories": 2153,
+    "DyMorningWeight": 141.5,
+    "DyBodyFatPercentage": 15.2,
+    "DyMuscleMassPercentage": 45.9,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-21T05:00:00Z",
+    "DyCalories": 2172,
+    "DyMorningWeight": 141.3,
+    "DyBodyFatPercentage": 15,
+    "DyMuscleMassPercentage": 46,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-22T05:00:00Z",
+    "DyCalories": 2202,
+    "DyMorningWeight": 141.5,
+    "DyBodyFatPercentage": 15.1,
+    "DyMuscleMassPercentage": 46,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-23T05:00:00Z",
+    "DyCalories": 2241,
+    "DyMorningWeight": 141.3,
+    "DyBodyFatPercentage": 15.2,
+    "DyMuscleMassPercentage": 45.9,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-24T05:00:00Z",
+    "DyCalories": 2106,
+    "DyMorningWeight": 142,
+    "DyBodyFatPercentage": 15.2,
+    "DyMuscleMassPercentage": 45.9,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-25T05:00:00Z",
+    "DyCalories": 2080,
+    "DyMorningWeight": 142,
+    "DyBodyFatPercentage": 15.3,
+    "DyMuscleMassPercentage": 45.8,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-26T05:00:00Z",
+    "DyCalories": 2370,
+    "DyMorningWeight": 141.1,
+    "DyBodyFatPercentage": 15.1,
+    "DyMuscleMassPercentage": 46,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  },
+  {
+    "DyDate": "2020-09-27T05:00:00Z",
+    "DyCalories": 2207,
+    "DyMorningWeight": 141.8,
+    "DyBodyFatPercentage": 15.3,
+    "DyMuscleMassPercentage": 45.9,
+    "WuLabel": "lbs",
+    "WuName": "pounds"
+  }
 ]

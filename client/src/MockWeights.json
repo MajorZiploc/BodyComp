@@ -3,5 +3,10 @@
     "WuId": 1,
     "WuLabel": "lbs",
     "WuName": "pounds"
+  },
+  {
+    "WuId": 2,
+    "WuLabel": "kg",
+    "WuName": "kilograms"
   }
 ]
