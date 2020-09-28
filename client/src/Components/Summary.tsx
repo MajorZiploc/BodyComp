@@ -13,8 +13,8 @@ interface SummaryState {
   weightUnits?: string;
   muscleGainOrLoss?: number;
   bodyFatGainOrLoss?: number;
-  // avgWeight: number;
-  // avgCalories: number;
+  avgWeight?: number;
+  avgCalories?: number;
 }
 
 export interface SummaryProps {
@@ -31,6 +31,24 @@ function gainOrLoss(l: number) {
 
 function formartGainOrLossNumber(n: number) {
   return Math.abs(n).toFixed(2);
+}
+
+function getAvgCalories(days?: Day[]) {
+  if (days) {
+    const daysWithCals = days.filter(d => notNullOrUndefined(d.DyCalories));
+    const avgCals = days.reduce((acc, ele) => acc + (ele.DyCalories ?? 0), 0) / daysWithCals.length;
+    return avgCals;
+  }
+  return undefined;
+}
+
+function getAvgWeight(days?: Day[]) {
+  if (days) {
+    const daysWithWeight = days.filter(d => notNullOrUndefined(d.DyMorningWeight));
+    const avgWeight = days.reduce((acc, ele) => acc + (ele.DyMorningWeight ?? 0), 0) / daysWithWeight.length;
+    return avgWeight;
+  }
+  return undefined;
 }
 
 function getWeightGainOrLoss(days?: Day[]) {
@@ -92,6 +110,8 @@ export default function Summary(summaryProps: SummaryProps) {
     weightUnits: getWeightUnits(summaryProps.days),
     bodyFatGainOrLoss: getBodyFatGainOrLoss(summaryProps.days),
     muscleGainOrLoss: getMuscleMassGainOrLoss(summaryProps.days),
+    avgCalories: getAvgCalories(summaryProps.days),
+    avgWeight: getAvgWeight(summaryProps.days),
   };
 
   return (
@@ -116,6 +136,20 @@ export default function Summary(summaryProps: SummaryProps) {
             <>
               {'Muscle Mass ' + gainOrLoss(summary.muscleGainOrLoss)}
               {formartGainOrLossNumber(summary.muscleGainOrLoss) + ' ' + summary.weightUnits}
+            </>
+          )}
+          <br />
+          {summary.avgCalories && (
+            <>
+              {'Average Calories: '}
+              {formartGainOrLossNumber(summary.avgCalories)}
+            </>
+          )}
+          <br />
+          {summary.avgWeight && (
+            <>
+              {'Average Weight: '}
+              {formartGainOrLossNumber(summary.avgWeight) + ' ' + summary.weightUnits}
             </>
           )}
         </p>
