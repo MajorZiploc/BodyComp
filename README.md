@@ -1,7 +1,6 @@
-# Deployment
+# Purpose
 
-look into this:
-https://www.netlify.com/
+A website to track body composition.
 
 # Debugging
 
