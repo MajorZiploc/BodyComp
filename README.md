@@ -2,6 +2,14 @@
 
 A website to track body composition.
 
+# Dev tools
+- vscode
+- nodejs
+- yarn
+- react.js
+- hapi.js
+- mysql
+
 # Debugging
 
 ## Debug Client
@@ -11,6 +19,9 @@ A website to track body composition.
 2. in another terminal:
    > cd server. Then run yarn start
 3. Debug using Client in .vscode
+
+### NOTE:
+- Client can be tested independently of server. Set shouldMockData to true in ./client/src/config.ts
 
 ## Debug Server
 
