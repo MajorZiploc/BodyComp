@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="(localdb)_MSSQLLocalDB.BodyComp 1"
   DTS:DTSID="{0EFF9451-2E16-42E0-9450-D36D29BEC8C2}"
