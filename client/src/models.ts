@@ -22,3 +22,14 @@ export type Weight = {
   WuLabel: string | null;
   WuName: string | null;
 };
+
+export type Auth = {
+  clientId: string;
+  clientRoot: string;
+};
+
+export type AppSettings = {
+  apiUrl: string;
+  auth: Auth;
+  shouldMockData: boolean;
+};
