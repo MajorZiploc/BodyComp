@@ -1,7 +1,9 @@
-import { Day, Weight } from '../models';
+import { Day, Weight, AppSettings } from '../models';
 import { DaysParams } from './dataParams';
 
-export default interface IDate {
+export default interface IData {
+  getConfig(): Promise<AppSettings>;
+
   getDays(queryParams?: DaysParams): Promise<Day[]>;
 
   getWeights(): Promise<Weight[]>;
