@@ -2,9 +2,9 @@ import MockDays from '../MockDays.json';
 import MockWeights from '../MockWeights.json';
 import { DaysParams } from './dataParams';
 import { Day, Weight } from '../models';
-import IData from './IData';
+import AData from './AData';
 
-export default class MockData implements IData {
+export default class MockData extends AData {
   async postDeleteDays(days: any[]): Promise<any> {
     return { message: 'Successful mock upload' };
   }

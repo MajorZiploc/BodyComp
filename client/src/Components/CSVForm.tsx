@@ -59,7 +59,7 @@ function CSVForm() {
 
   useEffect(() => {
     const f = async () => {
-      const weights = await data.getWeights();
+      const weights = await (await data).getWeights();
       const firstWeight = weights?.find((w: any) => w)?.WuId ?? undefined;
       setWeightMeasureId(firstWeight);
       setWeights(weights);

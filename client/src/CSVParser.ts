@@ -53,8 +53,8 @@ async function upsertDb(jsons: any[], weightMeasureId: number) {
       console.log(JSON.stringify(body));
       const entriesToDelete = body.filter(j => j[SHOULD_DELETE] === TRUE).map(j => jr.subJson(j, [DATE]));
       const upsertEntries = body.filter(j => j[SHOULD_DELETE] !== TRUE).map(j => jr.subJsonExcept(j, [SHOULD_DELETE]));
-      const response = await data.postDays(upsertEntries);
-      const deleteResponse = await data.postDeleteDays(entriesToDelete);
+      const response = await (await data).postDays(upsertEntries);
+      const deleteResponse = await (await data).postDeleteDays(entriesToDelete);
       // TODO: how to handle showing the data from both?
       console.log(JSON.stringify(response));
       return { fate: Fate.SUCCESS, result: response + ' ' + deleteResponse };

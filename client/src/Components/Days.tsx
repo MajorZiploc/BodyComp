@@ -6,7 +6,7 @@ const Days = () => {
   const [days, setDays] = useState({});
 
   async function fetchData() {
-    data
+    (await data)
       .getDays()
       .then((res: any) => {
         return setDays(res);

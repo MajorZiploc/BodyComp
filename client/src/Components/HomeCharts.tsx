@@ -27,7 +27,7 @@ function HomeCharts() {
 
   useEffect(() => {
     const f = async () => {
-      const ds = await data.getDays({
+      const ds = await (await data).getDays({
         minDate: startDate?.toLocaleDateString(),
         maxDate: endDate?.toLocaleDateString(),
       });
