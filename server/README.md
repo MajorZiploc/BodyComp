@@ -12,14 +12,20 @@
 
 ## Setup
 
-# first time up front setup
+### first time up front setup
 > mkdir ~/.virtualenvs
 > python -m venv ~/.virtualenvs/body_comp_server
 
-# launch virtual environment
+### launch virtual environment
 > source ~/.virtualenvs/body_comp_server/bin/activate
 
-# install dependencies
+### install dependencies
 > pip install -e .
+
+### run migrations for db
+> ./migrate.sh
+
+### run server
+> ./run.sh
 
 
