@@ -1,1 +1,6 @@
 python manage.py inspectdb [<table_name>]
+
+python manage.py dbshell -- -help
+
+look into using sqlite3 to read db.sqlite3 file
+
