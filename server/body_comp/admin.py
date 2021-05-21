@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import WeightUnits, Day
+from .models import WeightUnit, Day
 
-admin.site.register(WeightUnits)
+admin.site.register(WeightUnit)
 admin.site.register(Day)
