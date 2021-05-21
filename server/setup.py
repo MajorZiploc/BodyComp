@@ -1,9 +1,6 @@
 from setuptools import setup, find_packages
 # -*- coding: utf-8 -*-
 
-# from distutils.core import setup
-
-
 try:
     long_description = open("README.rst").read()
 except IOError:
