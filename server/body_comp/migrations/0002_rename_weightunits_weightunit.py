@@ -5,13 +5,13 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('body_comp', '0001_initial'),
-    ]
+  dependencies = [
+      ('body_comp', '0001_initial'),
+  ]
 
-    operations = [
-        migrations.RenameModel(
-            old_name='WeightUnits',
-            new_name='WeightUnit',
-        ),
-    ]
+  operations = [
+      migrations.RenameModel(
+          old_name='WeightUnits',
+          new_name='WeightUnit',
+      ),
+  ]

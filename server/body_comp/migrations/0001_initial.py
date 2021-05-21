@@ -6,30 +6,30 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    initial = True
+  initial = True
 
-    dependencies = [
-    ]
+  dependencies = [
+  ]
 
-    operations = [
-        migrations.CreateModel(
-            name='WeightUnits',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=250)),
-                ('label', models.CharField(max_length=100)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Day',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('calories', models.IntegerField(default=0)),
-                ('morning_weight', models.FloatField(default=0.0)),
-                ('body_fat_percentage', models.FloatField(default=0.0)),
-                ('muscle_mass_percentage', models.FloatField(default=0.0)),
-                ('day_date', models.DateField()),
-                ('weight_units', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='body_comp.weightunits')),
-            ],
-        ),
-    ]
+  operations = [
+      migrations.CreateModel(
+          name='WeightUnits',
+          fields=[
+              ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+              ('name', models.CharField(max_length=250)),
+              ('label', models.CharField(max_length=100)),
+          ],
+      ),
+      migrations.CreateModel(
+          name='Day',
+          fields=[
+              ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+              ('calories', models.IntegerField(default=0)),
+              ('morning_weight', models.FloatField(default=0.0)),
+              ('body_fat_percentage', models.FloatField(default=0.0)),
+              ('muscle_mass_percentage', models.FloatField(default=0.0)),
+              ('day_date', models.DateField()),
+              ('weight_units', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='body_comp.weightunits')),
+          ],
+      ),
+  ]
