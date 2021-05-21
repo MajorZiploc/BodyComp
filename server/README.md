@@ -7,7 +7,8 @@
 
 ## Development tools
 - vscode
-- python extension for vscode
+- python extension for vscode - ms-python.python
+- pylance extension for vscode - ms-python.vscode-pylance
 - bash
 - wsl1 ubuntu
 
