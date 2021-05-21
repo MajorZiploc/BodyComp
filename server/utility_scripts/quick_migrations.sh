@@ -2,5 +2,6 @@
 
 SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-python "$SCRIPTPATH"/manage.py migrate
+"$SCRIPTPATH/make_migrates.sh"
+"$SCRIPTPATH/migrate.sh"
 
