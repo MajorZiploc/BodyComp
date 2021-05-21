@@ -48,5 +48,5 @@ Makes use of autopep8
 
 Run the following to lint the whole project:
 
-> ./lint.sh
+> ./utility_scripts/lint.sh
 
