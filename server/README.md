@@ -3,18 +3,18 @@
 ## Requirements
 - python3.8
 - pip
+- python3-venv
 
 ## Development tools
 - vscode
 - python extension for vscode
 - bash
-- wsl ubuntu
+- wsl1 ubuntu
 
 ## Setup
 
 ### first time up front setup
-> mkdir ~/.virtualenvs
-> python -m venv ~/.virtualenvs/body_comp_server
+> mkdir -p ~/.virtualenvs && python -m venv ~/.virtualenvs/body_comp_server
 
 ### launch virtual environment
 > source ~/.virtualenvs/body_comp_server/bin/activate
