@@ -42,3 +42,11 @@ Even with the use of a linux subsystem to develop, there can be some issues when
 - Script files not executable. The utility_scripts may not have permissions to be run. Use the following script at the ROOT of the project. DO NOT RUN OUTSIDE OF THIS PROJECT.
 > find . -maxdepth "9" -regextype egrep -iregex ".*\.sh" -type f -not -path '*/__pycache__/*' -not -path '*/bin/*' -not -path '*/obj/*' -not -path '*/.git/*' -not -path '*/.svn/*' -not -path '*/node_modules/*' -not -path '*/.ionide/*' -exec chmod +777 "{}" \;
 
+## Linting
+
+Makes use of autopep8
+
+Run the following to lint the whole project:
+
+> find . -regextype egrep -iregex ".*\.py" -type f -not -path '*/__pycache__/*' -not -path '*/bin/*' -not -path '*/obj/*' -not -path '*/.git/*' -not -path '*/.svn/*' -not -path '*/node_modules/*' -not -path '*/.ionide/*' -exec autopep8 --in-place --aggressive --aggressive "{}" \;
+
