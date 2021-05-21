@@ -8,10 +8,17 @@
       "type": "node",
       "request": "launch",
       "name": "Server",
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "program": "${workspaceFolder}/server/src/index.ts",
-      "args": ["-r", "ts-node/register"],
-      "outFiles": ["${workspaceFolder}/**/*.js"]
+      "args": [
+        "-r",
+        "ts-node/register"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/**/*.js"
+      ]
     },
     {
       "type": "chrome",
@@ -19,6 +26,24 @@
       "name": "Client",
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}/client"
+    },
+    {
+      "name": "Django",
+      "type": "python",
+      "request": "launch",
+      "stopOnEntry": false,
+      "program": "${workspaceRoot}/server/manage.py",
+      "args": [
+        "runserver",
+        "--no-color",
+        "--noreload"
+      ],
+      "debugOptions": [
+        "WaitOnAbnormalExit",
+        "WaitOnNormalExit",
+        "RedirectOutput",
+        "DjangoDebugging"
+      ]
     }
   ]
 }
