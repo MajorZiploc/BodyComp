@@ -5,7 +5,7 @@ class WeightUnit(models.Model):
     label = models.CharField(max_length=100)
 
     def __str__(self):
-            return self.name
+        return self.name
 
 class Day(models.Model):
     weight_units = models.ForeignKey(WeightUnit, on_delete=models.CASCADE)
@@ -16,5 +16,5 @@ class Day(models.Model):
     day_date = models.DateField()
 
     def __str__(self):
-            return f'{self.day_date} {self.calories}'
+        return f'{self.day_date} {self.calories}'
 
