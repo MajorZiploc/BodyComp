@@ -28,7 +28,10 @@
 > ./utility_scripts/quick_migrations.sh
 
 ### run server
-> ./utility_scripts/run.sh
+> ./utility_scripts/run_server.sh
+
+### run tests
+> ./utility_scripts/run_tests.sh
 
 
 ## Troubleshooting
