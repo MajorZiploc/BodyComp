@@ -37,10 +37,10 @@ This app was developed on a Windows 10 machine. I have checked many times to ens
 Even with the use of a linux subsystem to develop, there can be some issues when running on a linux machine.
 
 - File formating - You may expersion errors when running scripts related to \r or :. This is due to the files being formatted incorrectly. Use the following script at the ROOT of the project. DO NOT RUN OUTSIDE OF THIS PROJECT. REQUIRES dos2unix. Install through your package manager.
-> find . -maxdepth "9" -regextype egrep -iregex ".*" -type f -not -path '*/__pycache__/*' -not -path '*/bin/*' -not -path '*/obj/*' -not -path '*/.git/*' -not -path '*/.svn/*' -not -path '*/node_modules/*' -not -path '*/.ionide/*' -exec dos2unix "{}" \;
+> find . -regextype egrep -iregex ".*" -type f -not -path '*/__pycache__/*' -not -path '*/bin/*' -not -path '*/obj/*' -not -path '*/.git/*' -not -path '*/.svn/*' -not -path '*/node_modules/*' -not -path '*/.ionide/*' -exec dos2unix "{}" \;
 
 - Script files not executable. The utility_scripts may not have permissions to be run. Use the following script at the ROOT of the project. DO NOT RUN OUTSIDE OF THIS PROJECT.
-> find . -maxdepth "9" -regextype egrep -iregex ".*\.sh" -type f -not -path '*/__pycache__/*' -not -path '*/bin/*' -not -path '*/obj/*' -not -path '*/.git/*' -not -path '*/.svn/*' -not -path '*/node_modules/*' -not -path '*/.ionide/*' -exec chmod +777 "{}" \;
+> find . -regextype egrep -iregex ".*\.sh" -type f -not -path '*/__pycache__/*' -not -path '*/bin/*' -not -path '*/obj/*' -not -path '*/.git/*' -not -path '*/.svn/*' -not -path '*/node_modules/*' -not -path '*/.ionide/*' -exec chmod +777 "{}" \;
 
 ## Linting
 
