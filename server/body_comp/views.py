@@ -5,13 +5,13 @@ from django.utils import timezone
 from .forms import DayForm
 
 
-def add_date_view(request):
+def add_day_view(request):
   context = {}
   form = DayForm(request.POST or None, request.FILES or None)
   if form.is_valid():
     form.save()
   context['form'] = form
-  return render(request, "body_comp/add_date.html", context)
+  return render(request, "body_comp/add_day.html", context)
 
 
 class IndexView(generic.ListView):

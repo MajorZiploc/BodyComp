@@ -57,8 +57,8 @@ class DayDetailViewTests(TestCase):
 
 
 class AddDayFormTests(TestCase):
-  def test_add_date_form_exists(self):
-    response = self.client.get(reverse('body_comp:add_date'))
+  def test_add_day_form_exists(self):
+    response = self.client.get(reverse('body_comp:add_day'))
     self.assertEqual(response.status_code, 200)
     labels = [
         'Submit',
@@ -71,10 +71,10 @@ class AddDayFormTests(TestCase):
     for label in labels:
       self.assertContains(response, label)
 
-  def test_add_date_form_post_for_invalid_date(self):
+  def test_add_day_form_post_for_invalid_date(self):
     wu = create_weight_units()
     response = self.client.post(
-      reverse('body_comp:add_date'),
+      reverse('body_comp:add_day'),
       data={'weight_units': wu.pk, 'day_date': 'fdsa'}
     )
     self.assertEqual(response.status_code, 200)
@@ -82,10 +82,10 @@ class AddDayFormTests(TestCase):
     for label in labels:
       self.assertContains(response, label)
 
-  def test_add_date_form_post_for_valid_data(self):
+  def test_add_day_form_post_for_valid_data(self):
     wu = create_weight_units()
     response = self.client.post(
-      reverse('body_comp:add_date'),
+      reverse('body_comp:add_day'),
       data={
         'weight_units': wu.pk,
         'day_date': '06/06/2020',

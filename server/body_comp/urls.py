@@ -6,5 +6,5 @@ app_name = 'body_comp'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
-    path('add_date', views.add_date_view, name='add_date')
+    path('add_day', views.add_day_view, name='add_day')
 ]
