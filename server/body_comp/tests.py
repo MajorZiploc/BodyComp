@@ -81,3 +81,21 @@ class AddDayFormTests(TestCase):
     labels = ['Enter a valid date.']
     for label in labels:
       self.assertContains(response, label)
+
+  def test_day_create_form_post_for_valid_data(self):
+    wu = create_weight_units()
+    response = self.client.post(
+      reverse('body_comp:day_create'),
+      data={
+        'weight_units': wu.pk,
+        'day_date': '06/06/2020',
+        'calories': 2500,
+        'morning_weight': 144,
+        'body_fat_percentage': 15,
+        'muscle_mass_percentage': 45
+      }
+    )
+    self.assertEqual(response.status_code, 200)
+    labels = ['Enter a valid date.']
+    for label in labels:
+      self.assertNotContains(response, label)
