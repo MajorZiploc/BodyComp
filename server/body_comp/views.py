@@ -2,6 +2,16 @@ from django.shortcuts import render
 from django.views import generic
 from .models import Day, WeightUnit
 from django.utils import timezone
+from .forms import DayForm
+
+
+def home_view(request):
+  context = {}
+  form = DayForm(request.POST or None, request.FILES or None)
+  if form.is_valid():
+    form.save()
+  context['form'] = form
+  return render(request, "body_comp/home.html", context)
 
 
 class IndexView(generic.ListView):

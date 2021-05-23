@@ -37,6 +37,7 @@ class DayIndexViewTests(TestCase):
     self.assertNotContains(response, "No days are available.")
     self.assertQuerysetEqual(response.context['day_list'], [day1])
 
+
 class DayDetailViewTests(TestCase):
   def test_no_day_details_404(self):
     create_weight_units()
