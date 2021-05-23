@@ -95,7 +95,7 @@ class AddDayFormTests(TestCase):
         'muscle_mass_percentage': 45
       }
     )
-    self.assertEqual(response.status_code, 200)
-    labels = ['Enter a valid date.']
-    for label in labels:
-      self.assertNotContains(response, label)
+    self.assertRedirects(response, reverse('body_comp:add_day'))
+    self.assertEqual(response.status_code, 302)
+    c = Day.objects.filter(calories=2500).count()
+    self.assertEqual(c, 1)

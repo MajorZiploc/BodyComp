@@ -1,17 +1,25 @@
 from django.shortcuts import render
 from django.views import generic
+from django.urls import reverse, reverse_lazy
 from .models import Day, WeightUnit
 from django.utils import timezone
 from .forms import DayForm
 
 
-def add_day_view(request):
-  context = {}
-  form = DayForm(request.POST or None, request.FILES or None)
-  if form.is_valid():
+class AddDayView(generic.FormView):
+  form_class = DayForm
+  template_name = 'body_comp/add_day.html'
+  success_url = reverse_lazy('body_comp:add_day')
+
+  def get_initial(self):
+    initial = super().get_initial()
+    # if self.request.user.is_authenticated:
+    # initial.update({'name': self.request.user.get_full_name()})
+    return initial
+
+  def form_valid(self, form):
     form.save()
-  context['form'] = form
-  return render(request, "body_comp/add_day.html", context)
+    return super().form_valid(form)
 
 
 class IndexView(generic.ListView):
