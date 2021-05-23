@@ -35,6 +35,9 @@
 ### run tests
 > ./utility_scripts/run_tests.sh
 
+### viewing db migrations
+> python manage.py sqlmigrate <app_name> <migration_name>
+
 
 ## Troubleshooting
 This app was developed on a Windows 10 machine. I have checked many times to ensure that you dont experience issues on Linux. But there is always a change you will encounter one of the following.
