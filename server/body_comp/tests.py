@@ -2,10 +2,11 @@ from django.test import TestCase
 from django.urls import reverse
 from .models import Day, WeightUnit
 from django.utils import timezone
+from django.contrib.messages import get_messages
 import datetime
 
 
-def create_weight_units():
+def create_weight_units() -> WeightUnit:
   return WeightUnit.objects.create(name='Pounds', label='lbs')
 
 
@@ -53,3 +54,30 @@ class DayDetailViewTests(TestCase):
     response = self.client.get(reverse('body_comp:detail', args=(day1.id,)))
     self.assertEqual(response.status_code, 200)
     self.assertEqual(response.context['day'], day1)
+
+
+class AddDayFormTests(TestCase):
+  def test_day_create_form_exists(self):
+    response = self.client.get(reverse('body_comp:day_create'))
+    self.assertEqual(response.status_code, 200)
+    labels = [
+        'Submit',
+        'Weight units',
+        'Calories',
+        'Morning weight',
+        'Body fat percentage',
+        'Muscle mass percentage',
+        'Day date']
+    for label in labels:
+      self.assertContains(response, label)
+
+  def test_day_create_form_post_for_invalid_date(self):
+    wu = create_weight_units()
+    response = self.client.post(
+      reverse('body_comp:day_create'),
+      data={'weight_units': wu.pk, 'day_date': 'fdsa'}
+    )
+    self.assertEqual(response.status_code, 200)
+    labels = ['Enter a valid date.']
+    for label in labels:
+      self.assertContains(response, label)
