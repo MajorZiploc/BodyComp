@@ -1,17 +1,19 @@
 # Body Comp
 
 ## Requirements
-- python 3.8.5
-- pip 20.0.2
+- python 3.8.x
+- pip 20.x.x
 - python3-venv
-- bash --version GNU bash, version 5.0.17(1)-release (x86_64-pc-linux-gnu)
+- bash --version GNU bash, version 5.x.xx
 
 ## Development tools
 - vscode
 - python extension for vscode - ms-python.python
 - pylance extension for vscode - ms-python.vscode-pylance
-- bash
-- wsl1 ubuntu
+- bash --version GNU bash, version 5.0.17(1)-release (x86_64-pc-linux-gnu)
+- wsl1 ubuntu 20.04
+- python 3.8.5
+- pip 20.0.2
 
 ## Setup
 
