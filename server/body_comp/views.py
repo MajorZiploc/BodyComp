@@ -4,9 +4,13 @@ from django.urls import reverse, reverse_lazy
 from .models import Day, WeightUnit
 from django.utils import timezone
 from .forms import DayForm
+from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+User = get_user_model()
 
 
-class AddDayView(generic.FormView):
+class AddDayView(LoginRequiredMixin, generic.FormView):
   form_class = DayForm
   template_name = 'body_comp/add_day.html'
   success_url = reverse_lazy('body_comp:add_day')
@@ -22,7 +26,7 @@ class AddDayView(generic.FormView):
     return super().form_valid(form)
 
 
-class IndexView(generic.ListView):
+class IndexView(LoginRequiredMixin, generic.ListView):
   template_name = 'body_comp/index.html'
   context_object_name = 'day_list'
 
@@ -34,6 +38,6 @@ class IndexView(generic.ListView):
     ).order_by('-day_date')[:]
 
 
-class DetailView(generic.DetailView):
+class DetailView(LoginRequiredMixin, generic.DetailView):
   model = Day
   template_name = 'body_comp/detail.html'
