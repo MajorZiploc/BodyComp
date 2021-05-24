@@ -20,7 +20,6 @@ def create_weight_units() -> WeightUnit:
 def create_day(days, user):
   time = timezone.now() + datetime.timedelta(days=days)
   w = WeightUnit.objects.get(name='Pounds')
-  print(f'{w} weight things')
   return w.day_set.create(day_date=time, fit_user=user)
 
 
