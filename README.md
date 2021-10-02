@@ -2,13 +2,14 @@
 
 A website to track body composition.
 
-# Dev tools
+# Dependencies
+- yarn v1.22.5
+
+# Development Dependencies
+- just (command runner) v0.10.0
+
+# Development tools
 - vscode
-- nodejs
-- yarn
-- react.js
-- hapi.js
-- mysql
 
 # Debugging
 
@@ -27,12 +28,6 @@ A website to track body composition.
 
 Debug using Server in .vscode
 
-# Javascript and Typescript Prettier Linting steps
+## Demo site
+> just demo-client-charts
 
-1. install prettier
-   > `npm install prettier`
-2. put .prettierrc and .prettierignore at root of project
-3. run
-   > `npm install -g prettier`
-4. Formatting whole project: run at the project root
-   > `prettier --write "**/*"`
