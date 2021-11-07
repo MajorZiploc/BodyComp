@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { data } from '../Data/DataFactory';
+import { Day } from './../models';
 
 const Days = () => {
   const [hasError, setErrors] = useState(false);
   const [days, setDays] = useState({});
 
-  async function fetchData() {
-    (await data)
-      .getDays()
-      .then((res: any) => {
-        return setDays(res);
-      })
-      .catch(err => {
-        return setErrors(err);
-      });
-  }
-
   useEffect(() => {
-    fetchData();
+    (async () => {
+      (await data)
+        .getDays()
+        .then((res: Day[]) => {
+          return setDays(res);
+        })
+        .catch(err => {
+          return setErrors(err);
+        });
+    })();
   }, []);
 
   return (

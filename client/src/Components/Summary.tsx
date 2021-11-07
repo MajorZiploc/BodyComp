@@ -1,11 +1,5 @@
 import { Day } from '../models';
-import React, { CSSProperties } from 'react';
-import { useState, useEffect } from 'react';
-import { data } from '../Data/DataFactory';
-import SingleLineChart from './SingleLineChart';
-import DatePicker from 'react-datepicker';
-import { withRouter } from 'react-router-dom';
-import { Carousel } from 'react-bootstrap';
+import React from 'react';
 import '../Styles/Carousel.css';
 
 interface SummaryState {
