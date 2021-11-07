@@ -26,14 +26,13 @@ function HomeCharts() {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    const f = async () => {
+    (async () => {
       const ds = await (await data).getDays({
         minDate: startDate?.toLocaleDateString(),
         maxDate: endDate?.toLocaleDateString(),
       });
       setDays(ds);
-    };
-    f();
+    })();
   }, [startDate, endDate]);
 
   function event(e: any) {
