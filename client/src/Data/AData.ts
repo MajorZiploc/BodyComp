@@ -1,13 +1,13 @@
 import { Day, Weight, AppSettings } from '../models';
 import { DaysParams } from './dataParams';
 import IData from './IData';
-import urljoin from 'url-join';
+import { join } from 'path';
 
 export default abstract class AData implements IData {
   private _config: Promise<AppSettings>;
 
   constructor() {
-    const url = urljoin(__dirname, 'config.json');
+    const url = join(__dirname, 'config.json');
     this._config = fetch(url, {
       mode: 'cors',
       headers: {
