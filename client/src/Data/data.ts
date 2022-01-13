@@ -1,4 +1,3 @@
-import urljoin from 'url-join';
 import { Day, Weight } from '../models';
 import { DaysParams } from './dataParams';
 import { formatQueryParams } from './dataUtil';
@@ -7,7 +6,7 @@ import AData from './AData';
 export default class Data extends AData {
   async postDeleteDays(days: any[]): Promise<any> {
     const config = await this.getConfig();
-    const url = urljoin(config.apiUrl, 'bulkDelete');
+    const url = `${config.apiUrl}/bulkDelete`;
     return await fetch(url, {
       method: 'post',
       headers: {
@@ -21,7 +20,7 @@ export default class Data extends AData {
 
   async getDays(queryParams?: DaysParams): Promise<Day[]> {
     const config = await this.getConfig();
-    const url = urljoin(config.apiUrl, 'day', formatQueryParams(queryParams));
+    const url = `${config.apiUrl}/day${formatQueryParams(queryParams)}`;
     return fetch(url, {
       mode: 'cors',
       headers: {
@@ -34,7 +33,7 @@ export default class Data extends AData {
 
   async getWeights(): Promise<Weight[]> {
     const config = await this.getConfig();
-    const url = urljoin(config.apiUrl, 'weight');
+    const url = `${config.apiUrl}/weight`;
     return await fetch(url, {
       mode: 'cors',
       headers: {
@@ -48,7 +47,7 @@ export default class Data extends AData {
   async postDays(days: any[]): Promise<any> {
     const config = await this.getConfig();
     console.log('here: ' + JSON.stringify(days));
-    const url = urljoin(config.apiUrl, 'bulkUpload');
+    const url = `${config.apiUrl}/bulkUpload`;
     return await fetch(url, {
       method: 'post',
       headers: {
