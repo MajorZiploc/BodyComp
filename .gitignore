@@ -392,3 +392,5 @@ dist
 tags
 
 Session.vim
+
+cscope.out
